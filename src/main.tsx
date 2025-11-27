@@ -1,13 +1,17 @@
+// paramétrage du QueryClient de TanStack
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import App from "./App";
 import Home from "./pages/Home";
 import Analysis from "./pages/Analysis";
 import About from "./pages/About";
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 const RootLayout = () => (
   <>
     <Header />
@@ -29,8 +33,13 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
     <RouterProvider router={router} />
   </React.StrictMode>
 );
