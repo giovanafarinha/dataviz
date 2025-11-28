@@ -1,4 +1,4 @@
-import Graph1Datas from "../components/graphs/Graph1Datas";
+import Graph1Datas from "../graphs/Graph1Datas";
 export default function Analysis() {
   return (
     <>

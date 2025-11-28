@@ -1,4 +1,4 @@
-import YearsCounts from "../../utils/YearsCounts";
+import YearsCounts from "../utils/YearsCounts";
 import Graph1Display from "./Graph1Display";
 
 export default function Graph1Datas() {
