@@ -1,13 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
-interface GraphStep {
-  year: number;
-  "Nombre de tournages": number;
-};
-
-interface GraphDatabase {
-  graphDatas: GraphStep[];
-};
+import { type GraphDatabase } from "../utils/Interfaces";
 
 export default function Graph1Display({ graphDatas }: GraphDatabase) {
   return (
