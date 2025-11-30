@@ -7,7 +7,5 @@ export default function Graph1Datas() {
   if (isPending) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error.message}</p>;
 
-  return (
-      <Graph1Display graphDatas={data} />
-  );
+  return <Graph1Display graphDatas={data} />;
 }

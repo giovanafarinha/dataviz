@@ -7,10 +7,5 @@ export default function Graph2Datas() {
   if (isPending) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error.message}</p>;
 
-  return (
-    <>
-      <Graph2Display graphDatas={data} choiceDisplay="" />
-      <Graph2Display graphDatas={data} choiceDisplay="percent" />
-    </>
-  );
+  return <Graph2Display graphDatas={data} />;
 }

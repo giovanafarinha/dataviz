@@ -7,11 +7,10 @@ export interface TypeGraph {
 
 export interface GraphDatabase {
   graphDatas: TypeGraph[];
-  choiceDisplay?: string;
-
 };
 
 export interface TypeDatasAPI {
-  type_tournage: string;
+  annee_tournage?: number;
+  type_tournage?: string;
   total: number;
 };

@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, type TooltipContentProps } from 'recharts';
 import { type GraphDatabase } from "../utils/Interfaces";
 
-export default function Graph2Display ({ graphDatas, choiceDisplay }: GraphDatabase) {
-  const displayPercent = (choiceDisplay == "percent") ? true : false;
-  const dataKeyBar = (displayPercent) ? "Poucentage de tournages" : "Nombre de tournages";
+export default function Graph2Display ({ graphDatas }: GraphDatabase) {
+  const [selectedData, setSelectedData] = useState("percent");
+  const displayPercent = (selectedData == "percent") ? true : false;
+  const percent = "Poucentage de tournages";
+  const nb = "Nombre de tournages";
+  const dataKeyBar = (displayPercent) ? percent : nb;
   const CustomTooltip = ({ active, payload, label }: TooltipContentProps<string | number, string>) => {
     const isVisible = active && payload && payload.length;
     return (
@@ -19,23 +23,29 @@ export default function Graph2Display ({ graphDatas, choiceDisplay }: GraphDatab
     );
   };
   return (
-    <BarChart
-      style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
-      responsive
-      data={graphDatas}
-      margin={{
-        top: 5,
-        right: 0,
-        left: 0,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="type" />
-      <YAxis width="auto" />
-      <Tooltip content={CustomTooltip} />
-      <Legend />
-      <Bar dataKey={dataKeyBar} fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-    </BarChart>
+    <div>
+      <select value={selectedData} onChange={(e) => setSelectedData(e.target.value)}>
+        <option value="percent">{percent}</option>
+        <option value="nb">{nb}</option>
+      </select>
+      <BarChart
+        style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
+        responsive
+        data={graphDatas}
+        margin={{
+          top: 5,
+          right: 0,
+          left: 0,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="type" />
+        <YAxis width="auto" />
+        <Tooltip content={CustomTooltip} />
+        <Legend />
+        <Bar dataKey={dataKeyBar} fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
+      </BarChart>
+    </div>
   );
 };
