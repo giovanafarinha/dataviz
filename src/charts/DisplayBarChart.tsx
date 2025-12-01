@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, type TooltipContentProps } from 'recharts';
-import { type GraphDatabase } from "../utils/Interfaces";
+import { type chartsDatabase } from "../types/chartsTypes";
 
-export default function Graph2Display ({ graphDatas }: GraphDatabase) {
+export default function DisplayBarChart ({ graphDatas }: chartsDatabase) {
   const [selectedData, setSelectedData] = useState("percent");
   const displayPercent = (selectedData == "percent") ? true : false;
   const percent = "Poucentage de tournages";

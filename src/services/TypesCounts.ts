@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { type TypeGraph, type TypeDatasAPI } from "./Interfaces";
+import { type apiTypes } from "../types/apiTypes";
+import { type chartsTypes } from "../types/chartsTypes";
 
 export default function TypesCounts() {
   return useQuery({
@@ -24,15 +25,15 @@ export default function TypesCounts() {
       const data = await response.json();
       
       // mise en forme des données
-      const allTypesTotal = data.results.reduce((sum: number, { total }: TypeDatasAPI) => sum + total, 0);
-      const graphDatas: TypeGraph[] = data.results.map((apiDatas: TypeDatasAPI) => (
+      const allTypesTotal = data.results.reduce((sum: number, { total }: apiTypes) => sum + total, 0);
+      const graphDatas: chartsTypes[] = data.results.map((apiDatas: apiTypes) => (
         {
           type: apiDatas.type_tournage,
           "Nombre de tournages": apiDatas.total,
           "Poucentage de tournages": Math.round((apiDatas.total * 100) / allTypesTotal)
         }
       ));
- console.log(graphDatas);
+      
       return graphDatas;
     },
   });

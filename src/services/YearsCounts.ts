@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { type TypeGraph, type TypeDatasAPI } from "./Interfaces";
+import { type apiTypes } from "../types/apiTypes";
+import { type chartsTypes } from "../types/chartsTypes";
 
 export default function YearsCounts(startYear: number, endYear: number) {
   return useQuery({
     queryKey: ["years-counts", startYear, endYear],
     queryFn: async () => {
+
       // préparation de la requête SQL
       const url = new URL(
         "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records"
@@ -13,7 +15,7 @@ export default function YearsCounts(startYear: number, endYear: number) {
       url.searchParams.set("group_by", "annee_tournage");
       url.searchParams.set(
         "where",
-        `annee_tournage >= date'${startYear}' AND annee_tournage <= date'${endYear}'`
+        "annee_tournage >= " + startYear + " AND annee_tournage <= " + endYear
       );
 
       // appel API et récupération des données
@@ -22,13 +24,14 @@ export default function YearsCounts(startYear: number, endYear: number) {
       const data = await response.json();
 
       // mise en forme des données
-      const graphDatas: TypeGraph[] = data.results.map(
-        (apiDatas: TypeDatasAPI) => ({
-          year: apiDatas.annee_tournage,
-          "Nombre de tournages": apiDatas.total,
-        })
+      const graphDatas: chartsTypes[] = data.results.map(
+        (apiDatas: apiTypes) => (
+          {
+            year: apiDatas.annee_tournage.substring(0, 4),
+            "Nombre de tournages": apiDatas.total,
+          })
       );
-      console.log(graphDatas);
+
       return graphDatas;
     },
   });

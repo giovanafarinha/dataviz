@@ -1,12 +1,14 @@
-import Graph1Datas from "../graphs/Graph1Datas";
-import Graph2Datas from "../graphs/Graph2Datas";
+import Charts from "../charts/Charts";
+const chartChoices = ["line", "bar"];
 
 export default function Analysis() {
   return (
     <>
       <h1> this is the the graphics</h1>
-      <Graph1Datas />
-      <Graph2Datas />
+      {chartChoices.map((choices) => (
+                <Charts chosenChart={choices} />
+              ))
+          }
     </>
   )
 }
