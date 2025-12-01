@@ -32,7 +32,7 @@ export default function TypesCounts() {
           "Poucentage de tournages": Math.round((apiDatas.total * 100) / allTypesTotal)
         }
       ));
-
+ console.log(graphDatas);
       return graphDatas;
     },
   });
