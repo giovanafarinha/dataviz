@@ -40,7 +40,7 @@ export default function DisplayBarChart ({ graphDatas }: chartsDatabase) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="type" />
+        <XAxis dataKey="xAxe" />
         <YAxis width="auto" />
         <Tooltip content={CustomTooltip} />
         <Legend />

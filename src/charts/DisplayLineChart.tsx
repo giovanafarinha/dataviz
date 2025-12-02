@@ -15,7 +15,7 @@ export default function DisplayLineChart({ graphDatas }: chartsDatabase) {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="year" />
+      <XAxis dataKey="xAxe" />
       <YAxis width="auto" />
       <Tooltip />
       <Legend />

@@ -1,8 +1,7 @@
 export interface chartsTypes {
-  year?: number;
-  type?: string;
+  [key: string]: string | number;
+  xAxe: string | number;
   "Nombre de tournages": number;
-  "Poucentage de tournages"?: number;
 }
 
 export interface chartsDatabase {
