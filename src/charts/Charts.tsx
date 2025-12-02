@@ -1,9 +1,9 @@
 import apiQuery from "../services/apiQuery";
 import DisplayLineChart from "./DisplayLineChart";
 import DisplayBarChart from "./DisplayBarChart";
-import { type apiParam, type apiParamAll } from "../types/apiParam";
+import { type chartProps } from "../types/apiParams";
 
-export default function Charts({ chosenChart }: any) {
+export default function Charts({ chosenChart }: chartProps) {
   
   const { isPending, error, data } = apiQuery(chosenChart);
 
@@ -13,8 +13,8 @@ export default function Charts({ chosenChart }: any) {
   return (
         <div>
             {chosenChart.query == "years" ? 
-                <DisplayLineChart graphDatas={data} /> : 
-                <DisplayBarChart graphDatas={data} />
+                <DisplayLineChart chartDatas={data} /> : 
+                <DisplayBarChart chartDatas={data} />
             }
         </div>
   );

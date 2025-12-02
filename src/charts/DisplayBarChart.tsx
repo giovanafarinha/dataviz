@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, type TooltipContentProps } from 'recharts';
 import { type chartsDatabase } from "../types/chartsTypes";
 
-export default function DisplayBarChart ({ graphDatas }: chartsDatabase) {
+export default function DisplayBarChart ({ chartDatas }: chartsDatabase) {
   const [selectedData, setSelectedData] = useState("percent");
   const displayPercent = (selectedData == "percent") ? true : false;
   const percent = "Poucentage de tournages";
@@ -31,7 +31,7 @@ export default function DisplayBarChart ({ graphDatas }: chartsDatabase) {
       <BarChart
         style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
         responsive
-        data={graphDatas}
+        data={chartDatas}
         margin={{
           top: 5,
           right: 0,
