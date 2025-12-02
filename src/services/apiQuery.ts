@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import type apiTypes from "../types/apiTypes";
 import { type chartsTypes } from "../types/chartsTypes";
-import { type apiParam } from "../types/apiParam";
+import { type apiParams } from "../types/apiParams";
 
-export default function apiQuery(params: apiParam) {
+export default function apiQuery(params: apiParams) {
   return useQuery({
     queryKey: ["types-counts", params],
     queryFn: async () => {
@@ -38,7 +38,7 @@ export default function apiQuery(params: apiParam) {
       
       // mise en forme des données
       const allTypesTotal = data.results.reduce((sum: number, { total }: apiTypes) => sum + total, 0);
-      const graphDatas: chartsTypes[] = data.results.map(function (apiDatas: apiTypes) {
+      const chartDatas: chartsTypes[] = data.results.map(function (apiDatas: apiTypes) {
         const select: string = params.select;
         const chartPoint: chartsTypes = {
           xAxe: apiDatas[select],
@@ -53,7 +53,7 @@ export default function apiQuery(params: apiParam) {
         return chartPoint;
       });
       
-      return graphDatas;
+      return chartDatas;
     },
   });
 }

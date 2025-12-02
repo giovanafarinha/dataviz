@@ -5,5 +5,5 @@ export interface chartsTypes {
 }
 
 export interface chartsDatabase {
-  graphDatas: chartsTypes[];
+  chartDatas: chartsTypes[];
 }

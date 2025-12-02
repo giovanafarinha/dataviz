@@ -1,8 +1,8 @@
-export type apiParam =
+export type apiParams =
   | { query: "years"; select: string; startYear: number; endYear: number }
   | { query: "types"; select: string }
 
-
-export interface apiParamAll {
-  [key: string]: apiParam[];
+export interface chartProps {
+  key: number;
+  chosenChart: apiParams;
 }

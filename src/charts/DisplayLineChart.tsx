@@ -1,12 +1,12 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { type chartsDatabase } from "../types/chartsTypes";
 
-export default function DisplayLineChart({ graphDatas }: chartsDatabase) {
+export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
   return (
     <LineChart
       style={{ width: '100%', maxWidth: '700px', height: '100%', maxHeight: '70vh', aspectRatio: 1.618 }}
       responsive
-      data={graphDatas}
+      data={chartDatas}
       margin={{
         top: 5,
         right: 0,
