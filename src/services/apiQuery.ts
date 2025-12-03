@@ -11,61 +11,83 @@ export default function apiQuery(params: apiParams) {
       const url = new URL(
         "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records"
       );
-      const selectParam = (params.query == "years") ? `year(${params.select}) as year` : `${params.select}`;
+      const selectParam =
+        params.query == "years"
+          ? `year(${params.select}) as year`
+          : `${params.select}`;
       url.searchParams.set(
         "select",
         `${selectParam}, count(${params.select}) as total`
       );
-      url.searchParams.set(
-        "group_by",
-        params.select
-      );
+      url.searchParams.set("group_by", params.select);
+
+      if (params.query == "ardt") {
+        url.searchParams.set("where", `startswith(${params.select},"75")`);
+      }
+
       if (params.query == "years") {
         url.searchParams.set(
-            "where",
-            `${params.select} >=  ${params.startYear} AND ${params.select} <= ${params.endYear}`
+          "where",
+          `${params.select} >=  ${params.startYear} AND ${params.select} <= ${params.endYear}`
         );
       }
-      url.searchParams.set(
-        "order_by",
-        `${params.select} ASC`
-      );
+      url.searchParams.set("order_by", `${params.select} ASC`);
 
       // appel API et récupération des données
       const response = await fetch(url.toString());
       if (!response.ok) throw new Error("API error");
       const data = await response.json();
-      
+
       // mise en forme des données
-      const allTypesTotal = data.results.reduce((sum: number, { total }: apiTypes) => sum + total, 0);
-      const chartDatas: chartsTypes[] = data.results.map(function (apiDatas: apiTypes) {
+      const allTypesTotal = data.results.reduce(
+        (sum: number, { total }: apiTypes) => sum + total,
+        0
+      );
+      let total75116: number = 0;
+      const chartDatas: chartsTypes[] = data.results.map(function (
+        apiDatas: apiTypes
+      ) {
         const select: string = params.select;
-        let chartPoint: chartsTypes ;
+        let chartPoint: chartsTypes;
         if (params.query == "ardt") {
-          if(apiDatas[select] !== null) {
-            chartPoint = {
-              xAxe: apiDatas[select],
-              "Nombre de tournages": apiDatas.total,
-             }  
-             
-             return chartPoint;
-         }
-        } else{
-           chartPoint = {
+          if (apiDatas[select] !== null) {
+            if (apiDatas[select] == 75116) {
+              total75116 = apiDatas.total;
+            } else {
+              chartPoint = {
+                xAxe: apiDatas[select],
+                "Nombre de tournages": apiDatas.total,
+              };
+              return chartPoint;
+            }
+          }
+        } else {
+          chartPoint = {
             xAxe: apiDatas[select],
             "Nombre de tournages": apiDatas.total,
-          }
+          };
           if (params.query == "years") {
-              chartPoint.xAxe = apiDatas.year
+            chartPoint.xAxe = apiDatas.year;
           }
           if (params.query == "types") {
-              chartPoint["Poucentage de tournages"] = Math.round((apiDatas.total * 100) / allTypesTotal);
+            chartPoint["Poucentage de tournages"] = Math.round(
+              (apiDatas.total * 100) / allTypesTotal
+            );
           }
-           return chartPoint;
-        }  
-       
+          return chartPoint;
+        }
       });
-      
+      if (params.query == "ardt") {
+        chartDatas[15]["Nombre de tournages"] += total75116;
+        /* chartDatas.map(function (chartPoint: chartsTypes) {
+          if (chartPoint.xAxe) {
+            if (chartPoint.xAxe == 75016) {
+              chartPoint["Nombre de tournages"] += total75116;
+            } 
+          }
+        }); */
+      }
+
       return chartDatas;
     },
   });
