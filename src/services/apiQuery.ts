@@ -40,17 +40,30 @@ export default function apiQuery(params: apiParams) {
       const allTypesTotal = data.results.reduce((sum: number, { total }: apiTypes) => sum + total, 0);
       const chartDatas: chartsTypes[] = data.results.map(function (apiDatas: apiTypes) {
         const select: string = params.select;
-        const chartPoint: chartsTypes = {
-          xAxe: apiDatas[select],
-          "Nombre de tournages": apiDatas.total,
-        }
-        if (params.query == "years") {
-            chartPoint.xAxe = apiDatas.year
-        }
-        if (params.query == "types") {
-            chartPoint["Poucentage de tournages"] = Math.round((apiDatas.total * 100) / allTypesTotal);
-        }
-        return chartPoint;
+        let chartPoint: chartsTypes ;
+        if (params.query == "ardt") {
+          if(apiDatas[select] !== null) {
+            chartPoint = {
+              xAxe: apiDatas[select],
+              "Nombre de tournages": apiDatas.total,
+             }  
+             
+             return chartPoint;
+         }
+        } else{
+           chartPoint = {
+            xAxe: apiDatas[select],
+            "Nombre de tournages": apiDatas.total,
+          }
+          if (params.query == "years") {
+              chartPoint.xAxe = apiDatas.year
+          }
+          if (params.query == "types") {
+              chartPoint["Poucentage de tournages"] = Math.round((apiDatas.total * 100) / allTypesTotal);
+          }
+           return chartPoint;
+        }  
+       
       });
       
       return chartDatas;
