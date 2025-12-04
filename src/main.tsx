@@ -13,8 +13,8 @@ import Footer from "./components/Footer";
 
 const RootLayout = () => (
   <>
-    <Header />
     <NavBar />
+    <Header />
     <Outlet /> {/* ///from react becoming page componant */}
     <Footer />
   </>
