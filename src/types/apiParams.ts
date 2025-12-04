@@ -4,6 +4,6 @@ export type apiParams =
   | { query: "ardt"; select: string }
 
 export interface chartProps {
-  key: number;
+  key: number | string;
   chosenChart: apiParams;
 }

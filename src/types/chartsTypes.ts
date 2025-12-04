@@ -1,8 +1,7 @@
 export interface chartsTypes {
-  [key: string]: string | number;
+  [key: string]: number | string;
   xAxe: string | number;
   "Nombre de tournages": number;
-
 }
 
 export interface chartsDatabase {
