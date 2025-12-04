@@ -5,10 +5,24 @@ export default function NavBar() {
   return (
     <>
       {/* Navigation */}
-      <nav className="bg-red-50 text-center text-xl underline">
-        <NavLink to="/"> Home </NavLink> |{""}
-        <NavLink to="/analysis">Analysis</NavLink> |{" "}
-        <NavLink to="/about">About</NavLink>{" "}
+      {/* router not working beacause i added the proprety of position
+     for px => padding-left: -18rem;
+padding-right: -18rem; 
+ for py => padding-top and padding-bottom
+*/}{" "}
+      <nav className=" mt-0 bg-neutral-300 w-screen flex justify-around items-center px-30 -py-15 ">
+        <NavLink className="cursor-pointer hover:text-red-700" to="/">
+          {" "}
+          Home{" "}
+        </NavLink>{" "}
+        |{""}
+        <NavLink className="cursor-pointer hover:text-red-700" to="/analysis">
+          Analysis
+        </NavLink>{" "}
+        |{" "}
+        <NavLink className="cursor-pointer hover:text-red-700" to="/about">
+          About
+        </NavLink>{" "}
       </nav>
     </>
   );
