@@ -1,69 +1,122 @@
 import bgvideo from "../assets/BgVideo.webm";
-import imageOne from "../assets/imageOne.png";
+import imageTwo from "../assets/imageTwo.jpg";
+import imageThree from "../assets/imageThree.jpg";
+import imageFour from "../assets/imageFour.jpg";
+import imageFive from "../assets/imageFive.jpg";
+
+import imageSix from "../assets/imageSix.jpg";
 export default function Home() {
   return (
     <>
-      <video className="h-full w-full rounded-lg" autoPlay muted loop>
+      {" "}
+      {/* injected the background video here  */}
+      <video className="h-40lw-40 l w-full rounded-lg" autoPlay muted loop>
         <source src={bgvideo} type="video/webm" />
       </video>
-      <section className="flex flex-row bg-yellow-600 ">
+      <section className="flex flex-row">
+        {" "}
+        {/* section of heading-container */}
         <h1 className="text-shadow-2xs text-8xl text-red-700 flex -mt-75 font-bbh">
           Dataviz Cinema
-        </h1>
-        <div className="flex justify-items-start rounded-lg mt-5">
-          <img
-            className="object-cover w-150 h-180 -py-10 mr-180"
-            src={imageOne}
-            alt="nature image"
-          />
-          {/*  <p className="text-xl text-black">
-            
+          {/* <p className="text-xl text-black">
             Visualisez l’activité cinématographique à travers les lieux de
             tournage à Paris: tendances par année, types de tournage,
-            arrondissements, réalisateurs et plus encore.
-          </p> */}
-        </div>
+            arrondissements, réalisateurs et plus encore. </p>
+ */}
+        </h1>{" "}
+        <section className="flex flex-col mt-20 mb-20 -ml-240 m-0 px-15">
+          {/* section of boxes-container */}
+          <div className="flex gap-6 justify-items-start py-5 px-5 ">
+            <div className="border-1 border-indigo-600 rounded-lg px-5 py-5">
+              01
+              <h2 className="font-semibold">
+                Tendances annuelles
+                <p className="font-light">
+                  Nombre de tournages par année pour repérer les pics
+                  d’activité.
+                </p>
+              </h2>
+            </div>
+            <div className=" border-1 border-indigo-600 rounded-lg px-5 py-5">
+              02
+              <h2 className="font-semibold">
+                Types de tournage
+                <p className="font-light">
+                  Long métrage, Série TV, Téléfilm… suivez l’évolution par type.
+                </p>
+              </h2>
+            </div>
+            <div className=" border-1 border-indigo-600 rounded-lg px-13 py-5">
+              03
+              <h2 className="font-semibold">
+                Graph des arrondissements
+                <p className="font-light">
+                  Répartition des tournages par arrondissement parisien.
+                </p>
+              </h2>
+            </div>
+            <div className=" border-1 border-indigo-600 rounded-lg px-14 py-5">
+              04
+              <h2 className="font-semibold">
+                Top réalisateurs
+                <p className="font-light">
+                  Classement des réalisateurs les plus présents à Paris.
+                </p>
+              </h2>
+            </div>
+          </div>
+        </section>{" "}
       </section>
-      <section className="flex flex-row -mt-170 mb-50 ml-30">
-        <div className="grid grid-rows-2 gap-6 justify-items-start py-5 px-5  ">
-          <div className="border-1 border-indigo-600 rounded-lg px-5 py-5">
-            01
-            <h2 className="font-semibold">
-              Tendances annuelles
-              <p className="font-light">
-                Nombre de tournages par année pour repérer les pics d’activité.
-              </p>
-            </h2>
-          </div>
-          <div className=" border-1 border-indigo-600 rounded-lg px-8 py-5">
-            02
-            <h2 className="font-semibold">
-              Types de tournage
-              <p className="font-light">
-                Long métrage, Série TV, Téléfilm… suivez l’évolution par type.
-              </p>
-            </h2>
-          </div>
-          <div className=" border-1 border-indigo-600 rounded-lg px-13 py-5">
-            03
-            <h2 className="font-semibold">
-              Graph des arrondissements
-              <p className="font-light">
-                Répartition des tournages par arrondissement parisien.
-              </p>
-            </h2>
-          </div>
-          <div className=" border-1 border-indigo-600 rounded-lg px-14 py-5">
-            04
-            <h2 className="font-semibold">
-              Top réalisateurs
-              <p className="font-light">
-                Classement des réalisateurs les plus présents à Paris.
-              </p>
-            </h2>
+      {/*  carousel container */}
+      <div className="flex gap-6 scroll-animation">
+        <div className="m-5 w-360 h-70 border-red-600 flex border-5 border-red overflow-x-auto gap-34  carousel">
+          {/*  group container */}
+
+          <div className="spin-15 flex gap-3">
+            <div aria-hidden className="flex items-center justify-center gap-3">
+              {/*  inside the card for each container */}
+              <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <img src={imageSix} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <img src={imageTwo} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <img src={imageThree} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <img src={imageFour} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <img src={imageFive} alt="man" />
+              </div>
+              <div className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <img src={imageThree} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center indigo-600 place-content-around items-center text-center">
+                <img src={imageSix} alt="man" />
+              </div>
+              <div className="flex gap-6 scroll-animation">
+                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                  <img src={imageTwo} alt="man" />
+                </div>
+                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                  <img src={imageThree} alt="man" />
+                </div>
+                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                  <img src={imageFour} alt="man" />
+                </div>
+                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                  <img src={imageFive} alt="man" />
+                </div>
+                <div className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                  <img src={imageThree} alt="man" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }
