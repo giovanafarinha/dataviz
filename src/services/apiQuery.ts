@@ -23,13 +23,19 @@ export default function apiQuery(params: apiParams) {
       if (params.query == "ardt") {
         url.searchParams.set(
           "where",
-          `startswith(${params.select},"75")`
+          `startswith(${params.select},"75") AND ${params.select} is not null`
         );
       }
       if (params.query == "years") {
         url.searchParams.set(
           "where",
           `${params.select} >=  ${params.startYear} AND ${params.select} <= ${params.endYear}`
+        );
+      }
+      if (params.query == "filmmakers") {
+        url.searchParams.set(
+          "where",
+          `${params.select} is not null`
         );
       }
       url.searchParams.set(
@@ -81,17 +87,39 @@ export default function apiQuery(params: apiParams) {
         }
       });
       if (params.query == "ardt") {
-        // on enlève l'index en trop de chartDatas
-        chartDatas.splice(index75116, 1);
-        // 
-        chartDatas.map(function (chartPoint: chartsTypes) {
-          if (chartPoint.xAxe) {
-            if (chartPoint.xAxe == 75016) {
-              chartPoint["Nombre de tournages"] += total75116;
-            } 
-           }
-        });
+        if (chartDatas[75016] && chartDatas[75116]) {
+          // on enlève l'index en trop de chartDatas
+          chartDatas.splice(index75116, 1);
+          // on cumule les totaux du 16ème arrondissement
+          chartDatas[75016]["Nombre de tournages"] = total75116;
+        }
       }
+      if (params.query == "filmmakers") {
+        // on évite le message d'erreur : "Variable is used before being assigned"
+        // avec ! après le nom de variable pour que TypeScript ne la considère pas undefined ou null
+        let chartDatasFinal!: {[key: string]: number};
+        chartDatas.map(function (chartPoint: chartsTypes) {
+          // on élimine les entrées qui ne contiennent pas des lettres
+          if (Number.isNaN(chartPoint.xAxe)) {
+            // on transforme le nom du réalisateur en minuscules sans accents
+            let nameCompare: string = chartPoint.xAxe as string;
+            nameCompare.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            // on met le premier caractère en majuscule
+            nameCompare = nameCompare.charAt(0).toUpperCase() + nameCompare.slice(1)
+            // on comptabilise le nombre de tournage pour ce réalisateur
+            if (chartDatasFinal[nameCompare]) {
+              chartDatasFinal[nameCompare] += chartPoint["Nombre de tournages"];
+            } else {
+              chartDatasFinal[nameCompare] = chartPoint["Nombre de tournages"];
+            }
+          }
+        });
+
+        // on vide chartDatas
+        // chartDatas.splice(0, chartDatas.length)
+        // on le remplit avec seulement les 10 réalisateurs qui ont le plus de tournages
+      }
+      
       return chartDatas;
     },
   });

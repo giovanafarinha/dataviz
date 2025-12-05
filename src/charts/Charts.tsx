@@ -13,7 +13,8 @@ export default function Charts({ chosenChart }: chartProps) {
   const chartList = {
       years: <DisplayLineChart key={chosenChart.query} chartDatas={data} />,
       types: <DisplayBarChart key={chosenChart.query} chartDatas={data} />,
-      ardt: <DisplayVerticalChart key={chosenChart.query} chartDatas={data} />
+      ardt: <DisplayVerticalChart key={chosenChart.query} chartDatas={data} />,
+      filmmakers: <DisplayLineChart key={chosenChart.query} chartDatas={data} />
   }
   return chartList[chosenChart.query]
 }
