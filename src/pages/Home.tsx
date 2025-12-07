@@ -10,21 +10,23 @@ export default function Home() {
     <>
       {" "}
       {/* injected the background video here  */}
-      <video className="h-40lw-40 l w-full rounded-lg" autoPlay muted loop>
+      <video className="h-40l w-40 l w-full rounded-lg" autoPlay muted loop>
         <source src={bgvideo} type="video/webm" />
       </video>
       <section className="flex flex-row">
         {" "}
         {/* section of heading-container */}
-        <h1 className="text-shadow-2xs text-8xl text-red-700 flex -mt-75 font-bbh">
+        <h1 className="text-shadow-2xs text-8xl text-red-700 flex -mt-65 font-bbh">
           Dataviz Cinema
-          {/* <p className="text-xl text-black">
-            Visualisez l’activité cinématographique à travers les lieux de
-            tournage à Paris: tendances par année, types de tournage,
-            arrondissements, réalisateurs et plus encore. </p>
- */}
         </h1>{" "}
         <section className="flex flex-col mt-20 mb-20 -ml-240 m-0 px-15">
+          {
+            <p className="text-xl font-light mb-5">
+              Visualisez l’activité cinématographique à travers les lieux de
+              tournage à Paris: tendances par année, types de tournage,
+              arrondissements, réalisateurs et plus encore.{" "}
+            </p>
+          }
           {/* section of boxes-container */}
           <div className="flex gap-6 justify-items-start py-5 px-5 ">
             <div className="border-1 border-indigo-600 rounded-lg px-5 py-5">
