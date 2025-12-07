@@ -27,7 +27,7 @@ export default function Home() {
         <section className="flex flex-col mt-20 mb-20 -ml-240 m-0 px-15">
           {/* section of boxes-container */}
           <div className="flex gap-6 justify-items-start py-5 px-5 ">
-            <div className="border-1 border-indigo-600 rounded-lg px-5 py-5">
+            <div className="border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
               01
               <h2 className="font-semibold">
                 Tendances annuelles
@@ -37,7 +37,7 @@ export default function Home() {
                 </p>
               </h2>
             </div>
-            <div className=" border-1 border-indigo-600 rounded-lg px-5 py-5">
+            <div className=" border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
               02
               <h2 className="font-semibold">
                 Types de tournage
@@ -46,7 +46,7 @@ export default function Home() {
                 </p>
               </h2>
             </div>
-            <div className=" border-1 border-indigo-600 rounded-lg px-13 py-5">
+            <div className=" border-1 border-indigo-600 rounded-lg px-13 py-5 shadow-xl">
               03
               <h2 className="font-semibold">
                 Graph des arrondissements
