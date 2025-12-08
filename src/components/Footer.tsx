@@ -42,7 +42,6 @@ export default function Footer() {
                   About
                 </NavLink>
               </nav>
-            </h2>
           </div>
           <div className="ml-5 px-5 py-5">
             02
