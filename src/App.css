@@ -1,6 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&display=swap");
 @import "tailwindcss";
+
 @theme {
   --font-bbh: "BBH Sans Bartle", sans-serif;
+  @keyframes spin15 {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-360px);
+    }
+  }
 }
 
+/* —— hide the scrollbar —— */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ——desativing all the controls of the scroll bar —— */
+.carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  pointer-events: none;
+}
+
+.spin-15 {
+  animation: spin15 15s linear infinite;
+}
