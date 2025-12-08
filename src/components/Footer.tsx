@@ -7,43 +7,40 @@ export default function Footer() {
       <section className=" w-365 bg-black text-white flex flex-col border-1 m-0 mt-50 p-45 rounded-lg px-25 py-25">
         <div className="grid grid-cols-2 gap-6 justify-items-center">
           <div className="">
-            {" "}
             01
             <h2 className="font-semibold">
-              {" "}
               Credits
+            </h2>
               <p className="font-light">
-                this project was coded with passion by{" "}
+                this project was coded with passion by
                 <a className="underline" href="https://github.com/Theufyr">
-                  Theufyr{" "}
-                </a>{" "}
-                and{" "}
+                  Theufyr
+                </a>
+                and
                 <a
                   className="underline"
                   href="https://github.com/giovanafarinha"
                 >
-                  {" "}
-                  Giovana{" "}
-                </a>{" "}
-                , open-sourced on GitHub hosted on Vercel.{" "}
+                  Giovana
+                </a>
+                , open-sourced on GitHub hosted on Vercel.
               </p>
               <nav className=" justify-around px-5 py-5 mt-10 flex">
                 <NavLink className="cursor-pointer hover:text-red-700" to="/">
-                  {" "}
-                  Home{" "}
-                </NavLink>{" "}
+                  Home
+                </NavLink>
                 <NavLink
                   className="cursor-pointer hover:text-red-700"
                   to="/analysis"
                 >
                   Analysis
-                </NavLink>{" "}
+                </NavLink>
                 <NavLink
                   className="cursor-pointer hover:text-red-700"
                   to="/about"
                 >
                   About
-                </NavLink>{" "}
+                </NavLink>
               </nav>
             </h2>
           </div>
@@ -52,20 +49,18 @@ export default function Footer() {
             <h2 className="font-semibold"> Ressources utiles</h2>
             <ul>
               <li className="font-light">
-                Documentation-{" "}
+                Documentation-
                 <a className="underline" href=" https://tailwindcss.com/">
-                  {" "}
-                  Tailwind{" "}
+                  Tailwind
                 </a>
               </li>
               <li>
-                Documentation-{" "}
+                Documentation-
                 <a className="underline" href=" https://recharts.github.io/">
-                  {" "}
-                  Recharts{" "}
+                  Recharts
                 </a>
               </li>
-            </ul>{" "}
+            </ul>
           </div>
         </div>
       </section>

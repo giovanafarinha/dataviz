@@ -23,7 +23,7 @@ export default function Home() {
             tournage à Paris: tendances par année, types de tournage,
             arrondissements, réalisateurs et plus encore. </p>
  */}
-        </h1>{" "}
+        </h1>
         <section className="flex flex-col mt-20 mb-20 -ml-240 m-0 px-15">
           {/* section of boxes-container */}
           <div className="flex gap-6 justify-items-start py-5 px-5 ">
