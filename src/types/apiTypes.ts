@@ -1,5 +1,5 @@
 export default interface apiTypes {
-  [key: string]: number | string;
+  [key: string]: string | number;
   annee_tournage: string;
   type_tournage: string;
   ardt_lieu: number;

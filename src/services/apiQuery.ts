@@ -1,24 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import type apiTypes from "../types/apiTypes";
-import { type chartsTypes } from "../types/chartsTypes";
+import { type chartsTypes, type chartModel } from "../types/chartsTypes";
 import { type apiParams } from "../types/apiParams";
 
-export default function apiQuery(params: apiParams) {
+export default function apiQuery(params: apiParams, moreWhere: string) {
   return useQuery({
-    queryKey: ["types-counts", params],
+    queryKey: ["api-datas", params],
     queryFn: async () => {
-      // préparation de la requête SQL
+      // PREPARATION DE LA REQUETE
+      // ------------------------------------------------------
       const url = new URL(
         "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records"
       );
-      const selectParam = (params.query == "years") ? `year(${params.select}) as year` : `${params.select}`;
+      const addType = (params.query == "typesXyears") ? ", type_tournage" : "";
+      let selectParam = `${params.select}`;
+      if ((params.query == "years") || (params.query == "typesXyears")) {
+        selectParam = `year(${params.select}) as year${addType}`;
+      }
       url.searchParams.set(
         "select",
         `${selectParam}, count(${params.select}) as total`
       );
       url.searchParams.set(
         "group_by",
-        params.select
+        params.select + addType
       );
       if (params.query == "ardt") {
         url.searchParams.set(
@@ -27,12 +32,13 @@ export default function apiQuery(params: apiParams) {
         );
       }
       if (params.query == "years") {
+        moreWhere = (moreWhere !== "") ? ` AND type_tournage =  ${moreWhere}` : "";
         url.searchParams.set(
           "where",
-          `${params.select} >=  ${params.startYear} AND ${params.select} <= ${params.endYear}`
+          `${params.select} >=  ${params.startYear} AND ${params.select} <= ${params.endYear}${moreWhere}`
         );
       }
-      if (params.query == "filmmakers") {
+      if (params.query == "directors") {
         url.searchParams.set(
           "where",
           `${params.select} is not null`
@@ -40,20 +46,28 @@ export default function apiQuery(params: apiParams) {
       }
       url.searchParams.set(
         "order_by",
-        `${params.select} ASC`
+        `${params.select}${addType} ASC`
       );
 
-      // appel API et récupération des données
+      // APPEL API ET RECUPERATION DES DONNEES
+      // ------------------------------------------------------
       const response = await fetch(url.toString());
       if (!response.ok) throw new Error("API error");
       const data = await response.json();
 
-      // mise en forme des données
-      let total75116: number = 0;
-      let index75116: number = 0;
+      // MISE EN FORME DES DONNEES
+      // ------------------------------------------------------
+      // somme de tous les totaux pour créer des pourcentages
       const allTypesTotal = data.results.reduce(
         (sum: number, { total }: apiTypes) => sum + total, 0);
+      // gestion du 16ème arrondissement divisé en 75016 et 75116
+      let index75016: number = 0;
+      let index75116: number = 0;
+      let total75116: number = 0;
+      // gestion des champs erronés de nom_realisateur
+      const directorsIndexes: number[] = [];
       
+      // création des points du futur tableau avec ses coordonnées x et y
       const chartDatas: chartsTypes[] = data.results.map(function (apiDatas: apiTypes, index: number) {
         const select: string = params.select;
         if (params.query == "ardt") {
@@ -64,6 +78,7 @@ export default function apiQuery(params: apiParams) {
             total75116 = apiDatas.total;
             index75116 = index;
           } else {
+            index75016 = (apiDatas[select] == 75016) ? index : index75016;
             const chartPoint: chartsTypes = {
               xAxe: apiDatas[select],
               "Nombre de tournages": apiDatas.total,
@@ -75,51 +90,109 @@ export default function apiQuery(params: apiParams) {
             xAxe: apiDatas[select],
             "Nombre de tournages": apiDatas.total,
           };
-          if (params.query == "years") {
+          if ((params.query == "years") || (params.query == "typesXyears")) {
             chartPoint.xAxe = apiDatas.year;
           }
           if (params.query == "types") {
+            // ajout d'un champ pourcentage
             chartPoint["Poucentage de tournages"] = Math.round(
               (apiDatas.total * 100) / allTypesTotal
             );
+          }
+          if (params.query == "typesXyears") {
+            chartPoint["type_tournage"] = apiDatas["type_tournage"];
+          }
+          if (params.query == "directors") {
+            // on élimine les entrées vides ou ne contenant que des nombres
+            let directorName = (typeof chartPoint.xAxe == "string") ? chartPoint.xAxe : "";
+            directorName.trim();
+            directorName = (isNaN(Number(directorName))) ? directorName : "";
+            if (directorName != ""){
+              // on transforme le nom du réalisateur en minuscules sans accents
+              directorName = directorName.normalize("NFD");
+              directorName = directorName.replace(/[\u0300-\u036f]/g, "");
+              directorName = directorName.toLowerCase();
+              // on met le premier caractère en majuscule de chaque mot
+              const directorWords = directorName.split(" ");
+              directorWords.map(function (word, index) {
+                directorWords[index] = word.charAt(0).toUpperCase() + word.slice(1);
+              });
+              directorName = directorWords.join(" ");
+              chartPoint.xAxe = directorName;
+            } else {
+              directorsIndexes.push(index); 
+            }
           }
           return chartPoint;
         }
       });
       if (params.query == "ardt") {
-        if (chartDatas[75016] && chartDatas[75116]) {
-          // on enlève l'index en trop de chartDatas
-          chartDatas.splice(index75116, 1);
-          // on cumule les totaux du 16ème arrondissement
-          chartDatas[75016]["Nombre de tournages"] = total75116;
-        }
+        // on enlève l'index en trop de chartDatas
+        chartDatas.splice(index75116, 1);
+        // on cumule les totaux du 16ème arrondissement
+        chartDatas[index75016]["Nombre de tournages"] = total75116;
       }
-      if (params.query == "filmmakers") {
-        // on évite le message d'erreur : "Variable is used before being assigned"
-        // avec ! après le nom de variable pour que TypeScript ne la considère pas undefined ou null
-        let chartDatasFinal!: {[key: string]: number};
-        chartDatas.map(function (chartPoint: chartsTypes) {
-          // on élimine les entrées qui ne contiennent pas des lettres
-          if (Number.isNaN(chartPoint.xAxe)) {
-            // on transforme le nom du réalisateur en minuscules sans accents
-            let nameCompare: string = chartPoint.xAxe as string;
-            nameCompare.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            // on met le premier caractère en majuscule
-            nameCompare = nameCompare.charAt(0).toUpperCase() + nameCompare.slice(1)
-            // on comptabilise le nombre de tournage pour ce réalisateur
-            if (chartDatasFinal[nameCompare]) {
-              chartDatasFinal[nameCompare] += chartPoint["Nombre de tournages"];
-            } else {
-              chartDatasFinal[nameCompare] = chartPoint["Nombre de tournages"];
+      if (params.query == "typesXyears") {
+        // on crée un modèle de point avec toutes les propriétés attendues
+        const pointModel: chartModel = {
+            xAxe: 0,
+        };
+        // on cherche tous les types pour les ajouter au modèle
+        chartDatas.map(function (chartPoint) {
+            const tempType = chartPoint.type_tournage;
+            // on rajoute le type de tournage aux propriétés du modèle s'il n'y est pas déjà
+            if (!pointModel.hasOwnProperty(tempType)) {
+                pointModel[tempType] = 0;
             }
-          }
         });
 
-        // on vide chartDatas
-        // chartDatas.splice(0, chartDatas.length)
-        // on le remplit avec seulement les 10 réalisateurs qui ont le plus de tournages
+        // tableau finalisé des données
+        const chartDatasFinal: chartsTypes[] = [];
+        chartDatas.forEach((chartPoint => {
+            // on classe les données par année
+            const existVerif = chartDatasFinal.find(point => point.xAxe === chartPoint.xAxe);
+            // si elle existe on ajoute le nombre de tournage
+            if (existVerif !== undefined) {
+                existVerif[chartPoint.type_tournage] = chartPoint["Nombre de tournages"];
+            // sinon on crée le point
+            } else {
+                // attention à utiliser assign et pas create pour que le modèle ne soit pas modifié
+                const newPoint = Object.assign({}, pointModel);
+                newPoint.xAxe = chartPoint.xAxe as number;
+                newPoint[chartPoint.type_tournage] = chartPoint["Nombre de tournages"];
+                chartDatasFinal.push(newPoint as chartsTypes);
+            }
+        }));
       }
-      
+      if (params.query == "directors") {
+        // on enlève les indexes indésirables
+        directorsIndexes.map((dIndex: number) => {
+          chartDatas.splice(dIndex, 1);
+        });
+        const chartDatasFinal: {[key: string]: number} = {};
+        chartDatas.map(function (chartPoint: chartsTypes) {
+          // on comptabilise le nombre de tournage pour ce réalisateur
+          if (chartDatasFinal[chartPoint.xAxe]) {
+            chartDatasFinal[chartPoint.xAxe] += chartPoint["Nombre de tournages"];
+          } else {
+            chartDatasFinal[chartPoint.xAxe] = chartPoint["Nombre de tournages"];
+          }
+        });
+        // on vide chartDatas
+        chartDatas.splice(0, chartDatas.length);
+        // on le remplit avec la liste nettoyée des réalisateurs
+        Object.keys(chartDatasFinal).map((director) => {
+          chartDatas.push({
+            xAxe: director,
+            "Nombre de tournages": chartDatasFinal[director],
+          }
+          )
+        });
+        // on trie la liste
+        chartDatas.sort((a, b) => b["Nombre de tournages"] - a["Nombre de tournages"]);
+        // on ne garde que les 10 réalisateurs qui ont le plus de tournages
+        chartDatas.length = 10;
+      }
       return chartDatas;
     },
   });

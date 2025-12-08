@@ -30,37 +30,37 @@ export default function Home() {
             01
             <h2 className="font-semibold">
               Tendances annuelles
+            </h2>
               <p className="font-light">
                 Nombre de tournages par année pour repérer les pics d’activité.
               </p>
-            </h2>
           </div>
           <div className=" border-1 border-indigo-600 rounded-lg px-8 py-5">
             02
             <h2 className="font-semibold">
               Types de tournage
+            </h2>
               <p className="font-light">
                 Long métrage, Série TV, Téléfilm… suivez l’évolution par type.
               </p>
-            </h2>
           </div>
           <div className=" border-1 border-indigo-600 rounded-lg px-13 py-5">
             03
             <h2 className="font-semibold">
               Graph des arrondissements
+            </h2>
               <p className="font-light">
                 Répartition des tournages par arrondissement parisien.
               </p>
-            </h2>
           </div>
           <div className=" border-1 border-indigo-600 rounded-lg px-14 py-5">
             04
             <h2 className="font-semibold">
               Top réalisateurs
+            </h2>
               <p className="font-light">
                 Classement des réalisateurs les plus présents à Paris.
               </p>
-            </h2>
           </div>
         </div>
       </section>
