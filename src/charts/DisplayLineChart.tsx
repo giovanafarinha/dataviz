@@ -1,12 +1,10 @@
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
+  LineChart, Line,
+  XAxis, YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-} from "recharts";
+  Legend
+} from 'recharts';
 import { type chartsDatabase } from "../types/chartsTypes";
 
 export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
