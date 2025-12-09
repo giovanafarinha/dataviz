@@ -1,8 +1,35 @@
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-import { type chartsDatabase } from "../types/chartsTypes";
+import {
+  AreaChart, Area,
+  XAxis, YAxis,
+  CartesianGrid,
+  Tooltip
+} from 'recharts';
+import { type chartsDatabase, type chartModel } from "../types/chartsTypes";
 
 export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) {
+  // liste des couleurs de graphiques
+  let colorChoice = 0;
+  const chartColors = ["#8884d8", "#82ca9d", "#ffc658", "#f17d7dff", "#7df1deff"];
+  function displayColor(color: number, change: boolean) {
+    colorChoice = (color < 5) ? color : 0;
+    const returnColor = chartColors[colorChoice];
+    if (change) {
+      colorChoice++;
+    }
+    return returnColor;
+  }
+  // liste des tournages pour afficher un graphique chacun
+  const shotsList: string[] = [];
+  function shotList(point: chartModel) {
+    Object.keys(point).map((key) => {
+      if (key != "xAxe") {
+        shotsList.push(key);
+      }
+    });
+  }
+  shotList(chartDatas[0] as chartModel);
   return (
+    <>
     <AreaChart
       style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
       responsive
@@ -18,10 +45,12 @@ export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) 
       <XAxis dataKey="xAxe" />
       <YAxis width="auto" />
       <Tooltip />
-      <Area type="monotone" dataKey="Long métrage" stackId="1" stroke="#8884d8" fill="#8884d8" />
-      <Area type="monotone" dataKey="Téléfilm" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-      <Area type="monotone" dataKey="Série TV" stackId="1" stroke="#ffc658" fill="#ffc658" />
-      <Area type="monotone" dataKey="Série Web" stackId="1" stroke="#f17d7dff" fill="#caff58ff" />
+      {
+        shotsList.map((key) => (
+          <Area type="monotone" dataKey={key} stackId="1" stroke={displayColor(colorChoice, false)} fill={displayColor(colorChoice, true)} />
+        ))
+      }
     </AreaChart>
+    </>
   );
 };

@@ -1,10 +1,7 @@
 import { useState } from "react";
 import {
-  BarChart,
-  Bar,
-  Rectangle,
-  XAxis,
-  YAxis,
+  BarChart, Bar, Rectangle,
+  XAxis, YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
@@ -33,11 +30,11 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
           <>
             <p className="label">{label}</p>
             <p
-              className="desc text-gray-950"
+              className="desc text-indigo-400"
               style={{ display: !displayPercent ? "inherit" : "none" }}
             >{`${payload[0].value} tournages`}</p>
             <p
-              className="desc text-gray-400"
+              className="desc text-indigo-400"
               style={{ display: displayPercent ? "inherit" : "none" }}
             >{`${payload[0].value}%`}</p>
           </>

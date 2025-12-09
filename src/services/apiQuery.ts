@@ -163,6 +163,12 @@ export default function apiQuery(params: apiParams, moreWhere: string) {
                 chartDatasFinal.push(newPoint as chartsTypes);
             }
         }));
+        // on vide chartDatas
+        chartDatas.splice(0, chartDatas.length);
+        // on le remplit avec la liste optimisée
+        chartDatasFinal.map((director) => {
+          chartDatas.push(director);
+        });
       }
       if (params.query == "directors") {
         // on enlève les indexes indésirables
