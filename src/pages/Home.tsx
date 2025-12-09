@@ -8,13 +8,11 @@ import imageSix from "../assets/imageSix.jpg";
 export default function Home() {
   return (
     <>
-      {" "}
       {/* injected the background video here  */}
       <video className="h-40lw-40 l w-full rounded-lg" autoPlay muted loop>
         <source src={bgvideo} type="video/webm" />
       </video>
       <section className="flex flex-row">
-        {" "}
         {/* section of heading-container */}
         <h1 className="text-shadow-2xs text-8xl text-red-700 flex -mt-75 font-bbh">
           Dataviz Cinema
@@ -56,7 +54,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </section>{" "}
+        </section>
       </section>
       {/*  carousel container */}
       <div className="flex gap-6 scroll-animation">

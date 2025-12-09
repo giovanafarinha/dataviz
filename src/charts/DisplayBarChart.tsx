@@ -45,7 +45,6 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
   return (
     <div className=" px-10 py-5 border-2 border-gray-200 rounded-lg">
       <h1 className=" mb-5 text-lg font-semibold">
-        {" "}
         Répartition par type de tournage
       </h1>
       <div>
