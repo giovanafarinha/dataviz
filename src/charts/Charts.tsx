@@ -9,16 +9,16 @@ import DisplayVerticalChart from "./DisplayVerticalChart";
 
 export default function Charts({ chosenChart }: chartProps) {
   let datasForChart: chartsTypes[];
-  const { isPending, error, data } = apiQuery(chosenChart, "");
-  if (isPending) return <p>Chargement...</p>;
-  if (error) return <p>Erreur : {error.message}</p>;
+  const { isPending, error, data } = apiQuery(chosenChart);
+  if (isPending) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
   datasForChart = data;
   const chartList = {
       years: <DisplayLineChart key={chosenChart.query} chartDatas={datasForChart} />,
       types: <DisplayBarChart key={chosenChart.query} chartDatas={datasForChart} />,
+      directors: <DisplayDotLineChart key={chosenChart.query} chartDatas={datasForChart} />,
       typesXyears: <DisplayStackedAreaChart key={chosenChart.query} chartDatas={datasForChart} />,
-      ardt: <DisplayVerticalChart key={chosenChart.query} chartDatas={datasForChart} />,
-      directors: <DisplayDotLineChart key={chosenChart.query} chartDatas={datasForChart} />
+      ardt: <DisplayVerticalChart key={chosenChart.query} chartDatas={datasForChart} />
   }
   return chartList[chosenChart.query]
 }
