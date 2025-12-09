@@ -10,7 +10,7 @@ export default function NavBar() {
 padding-right: -18rem; 
  for py => padding-top and padding-bottom
 */}
-      <nav className=" mt-0 bg-neutral-300 w-screen flex justify-around items-center px-30 -py-15 font-semibold">
+      <nav className=" mt-0 sepia-70 bg-indigo-200 w-screen flex justify-around items-center px-60 -py-15 text-black text-xl font-light">
         <NavLink className="cursor-pointer hover:text-red-700" to="/">
           Home
         </NavLink>

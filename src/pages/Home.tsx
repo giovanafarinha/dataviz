@@ -16,7 +16,7 @@ export default function Home() {
       <section className="flex flex-row">
         {" "}
         {/* section of heading-container */}
-        <h1 className="text-shadow-2xs text-8xl text-red-700 flex -mt-75 font-bbh">
+        <h1 className="text-shadow-2xs text-8xl sepia-70 text-indigo-200 flex -mt-75 font-bbh">
           Dataviz Cinema
           {/* <p className="text-xl text-black">
             Visualisez l’activité cinématographique à travers les lieux de
@@ -24,31 +24,31 @@ export default function Home() {
             arrondissements, réalisateurs et plus encore. </p>
  */}
         </h1>
-        <section className="flex flex-col mt-20 mb-20 -ml-240 m-0 px-15">
+        <section className=" sepia-70 flex flex-col -ml-240 m-0 px-15">
           {/* section of boxes-container */}
           <div className="flex gap-6 justify-items-start py-5 px-5 ">
-            <div className="border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
+            <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
               01
               <h2 className="font-semibold">Tendances annuelles </h2>
               <p className="font-light">
                 Nombre de tournages par année pour repérer les pics d’activité.
               </p>
             </div>
-            <div className=" border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
+            <div className="bg-indigo-200 text-black border-1 border-gray-600 rounded-lg px-5 py-5 shadow-lg">
               02
               <h2 className="font-semibold">Types de tournage</h2>
               <p className="font-light">
                 Long métrage, Série TV, Téléfilm… suivez l’évolution par type.
               </p>
             </div>
-            <div className=" border-1 border-indigo-600 rounded-lg px-13 py-5 shadow-xl">
+            <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-13 py-5 shadow-xl">
               03
               <h2 className="font-semibold">Graph des arrondissements </h2>
               <p className="font-light">
                 Répartition des tournages par arrondissement parisien.
               </p>
             </div>
-            <div className=" border-1 border-indigo-600 rounded-lg px-14 py-5">
+            <div className="bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-14 py-5">
               04
               <h2 className="font-semibold">Top réalisateurs</h2>
               <p className="font-light">
@@ -60,47 +60,62 @@ export default function Home() {
       </section>
       {/*  carousel container */}
       <div className="flex gap-6 scroll-animation">
-        <div className="m-5 w-360 h-70 border-red-600 flex border-5 border-red overflow-x-auto gap-34 carousel">
+        <div className="m-5 w-360 h-70 border-black flex border-15 border-red overflow-x-auto gap-34 carousel">
           {/*  group container */}
 
-          <div className="spin-15 flex gap-3">
+          <div className="spin-15 flex gap-3 sepia-70">
             <div aria-hidden className="flex items-center justify-center gap-3">
               {/*  inside the card for each container */}
-              <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+              <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
                 <img src={imageSix} alt="man" />
               </div>
-              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
                 <img src={imageTwo} alt="man" />
               </div>
-              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
-                <img src={imageThree} alt="man" className="hover:opacity-25" />
-              </div>
-              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
-                <img src={imageFour} alt="man" />
-              </div>
-              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
-                <img src={imageFive} alt="man" />
-              </div>
-              <div className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
                 <img src={imageThree} alt="man" />
               </div>
-              <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center indigo-600 place-content-around items-center text-center">
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
+                <img src={imageFour} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
+                <img src={imageFive} alt="man" />
+              </div>
+              <div className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
+                <img src={imageThree} alt="man" />
+              </div>
+              <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
                 <img src={imageSix} alt="man" />
               </div>
               <div className="flex gap-6 scroll-animation">
-                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <div
+                  className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
+ place-content-around items-center text-center"
+                >
                   <img src={imageTwo} alt="man" />
                 </div>
-                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <div
+                  className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
+ place-content-around items-center text-center"
+                >
                   <img src={imageThree} alt="man" />
                 </div>
-                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <div
+                  className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
+ place-content-around items-center text-center"
+                >
                   <img src={imageFour} alt="man" />
                 </div>
-                <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <div
+                  className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
+ place-content-around items-center text-center"
+                >
                   <img src={imageFive} alt="man" />
                 </div>
-                <div className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
+                <div
+                  className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-black
+ place-content-around items-center text-center"
+                >
                   <img src={imageThree} alt="man" />
                 </div>
               </div>

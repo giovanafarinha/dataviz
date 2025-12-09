@@ -14,11 +14,27 @@ export default function Charts({ chosenChart }: chartProps) {
   if (error) return <p>Erreur : {error.message}</p>;
   datasForChart = data;
   const chartList = {
-      years: <DisplayLineChart key={chosenChart.query} chartDatas={datasForChart} />,
-      types: <DisplayBarChart key={chosenChart.query} chartDatas={datasForChart} />,
-      typesXyears: <DisplayStackedAreaChart key={chosenChart.query} chartDatas={datasForChart} />,
-      ardt: <DisplayVerticalChart key={chosenChart.query} chartDatas={datasForChart} />,
-      directors: <DisplayDotLineChart key={chosenChart.query} chartDatas={datasForChart} />
-  }
-  return chartList[chosenChart.query]
+    years: (
+      <DisplayLineChart key={chosenChart.query} chartDatas={datasForChart} />
+    ),
+    types: (
+      <DisplayBarChart key={chosenChart.query} chartDatas={datasForChart} />
+    ),
+    typesXyears: (
+      <DisplayStackedAreaChart
+        key={chosenChart.query}
+        chartDatas={datasForChart}
+      />
+    ),
+    ardt: (
+      <DisplayVerticalChart
+        key={chosenChart.query}
+        chartDatas={datasForChart}
+      />
+    ),
+    directors: (
+      <DisplayDotLineChart key={chosenChart.query} chartDatas={datasForChart} />
+    ),
+  };
+  return chartList[chosenChart.query];
 }

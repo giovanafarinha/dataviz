@@ -11,9 +11,10 @@ import { type chartsDatabase } from "../types/chartsTypes";
 
 export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
   return (
-    <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
+    <div className="sepia-60  px-5 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
       <h1 className="text-lg font-semibold"> Tournages par arrondissement </h1>
       <ComposedChart
+        className="bg-white "
         layout="vertical"
         style={{
           width: "100%",
