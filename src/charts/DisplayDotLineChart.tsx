@@ -10,7 +10,7 @@ import {
 import { type chartsDatabase } from "../types/chartsTypes";
 
 const CustomizedDot = (props: DotItemDotProps) => {
-  const { cx, cy, value } = props;
+  const { cx, cy } = props;
 
   if (cx == null || cy == null) {
     return <g />;
