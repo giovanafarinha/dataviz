@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import typesXyearsSort from "./typesXyearsSort";
+import directorsNames from "./directorsNames";
 import type apiTypes from "../types/apiTypes";
-import { type chartsTypes, type chartModel } from "../types/chartsTypes";
+import { type chartsTypes } from "../types/chartsTypes";
 import { type apiParams } from "../types/apiParams";
 
 export default function apiQuery(params: apiParams, moreWhere: string) {
@@ -108,17 +110,7 @@ export default function apiQuery(params: apiParams, moreWhere: string) {
             directorName.trim();
             directorName = (isNaN(Number(directorName))) ? directorName : "";
             if (directorName != ""){
-              // on transforme le nom du réalisateur en minuscules sans accents
-              directorName = directorName.normalize("NFD");
-              directorName = directorName.replace(/[\u0300-\u036f]/g, "");
-              directorName = directorName.toLowerCase();
-              // on met le premier caractère en majuscule de chaque mot
-              const directorWords = directorName.split(" ");
-              directorWords.map(function (word, index) {
-                directorWords[index] = word.charAt(0).toUpperCase() + word.slice(1);
-              });
-              directorName = directorWords.join(" ");
-              chartPoint.xAxe = directorName;
+              chartPoint.xAxe = directorsNames(directorName);
             } else {
               directorsIndexes.push(index); 
             }
@@ -133,48 +125,23 @@ export default function apiQuery(params: apiParams, moreWhere: string) {
         chartDatas[index75016]["Nombre de tournages"] = total75116;
       }
       if (params.query == "typesXyears") {
-        // on crée un modèle de point avec toutes les propriétés attendues
-        const pointModel: chartModel = {
-            xAxe: 0,
-        };
-        // on cherche tous les types pour les ajouter au modèle
-        chartDatas.map(function (chartPoint) {
-            const tempType = chartPoint.type_tournage;
-            // on rajoute le type de tournage aux propriétés du modèle s'il n'y est pas déjà
-            if (!pointModel.hasOwnProperty(tempType)) {
-                pointModel[tempType] = 0;
-            }
-        });
-
-        // tableau finalisé des données
-        const chartDatasFinal: chartsTypes[] = [];
-        chartDatas.forEach((chartPoint => {
-            // on classe les données par année
-            const existVerif = chartDatasFinal.find(point => point.xAxe === chartPoint.xAxe);
-            // si elle existe on ajoute le nombre de tournage
-            if (existVerif !== undefined) {
-                existVerif[chartPoint.type_tournage] = chartPoint["Nombre de tournages"];
-            // sinon on crée le point
-            } else {
-                // attention à utiliser assign et pas create pour que le modèle ne soit pas modifié
-                const newPoint = Object.assign({}, pointModel);
-                newPoint.xAxe = chartPoint.xAxe as number;
-                newPoint[chartPoint.type_tournage] = chartPoint["Nombre de tournages"];
-                chartDatasFinal.push(newPoint as chartsTypes);
-            }
-        }));
-        // on vide chartDatas
-        chartDatas.splice(0, chartDatas.length);
-        // on le remplit avec la liste optimisée
-        chartDatasFinal.map((director) => {
-          chartDatas.push(director);
-        });
+        typesXyearsSort(chartDatas);
       }
       if (params.query == "directors") {
         // on enlève les indexes indésirables
         directorsIndexes.map((dIndex: number) => {
           chartDatas.splice(dIndex, 1);
         });
+
+        // const chartDatasFinal: chartsTypes[] = directorsSort(chartDatas);
+        // // on vide chartDatas
+        // chartDatas.splice(0, chartDatas.length);
+        // // on le remplit avec la liste optimisée
+        // chartDatasFinal.map((directors) => {
+        //   chartDatas.push(directors);
+        // });
+
+
         const chartDatasFinal: {[key: string]: number} = {};
         chartDatas.map(function (chartPoint: chartsTypes) {
           // on comptabilise le nombre de tournage pour ce réalisateur
