@@ -6,6 +6,7 @@ import {
 } from 'recharts';
 import { type chartsDatabase, type chartModel } from "../types/chartsTypes";
 
+
 export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) {
   // liste des couleurs de graphiques
   let colorChoice = 0;
@@ -29,28 +30,34 @@ export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) 
   }
   shotList(chartDatas[0] as chartModel);
   return (
-    <>
-    <AreaChart
-      style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
-      responsive
-      data={chartDatas}
-      margin={{
-        top: 20,
-        right: 0,
-        left: 0,
-        bottom: 0,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="xAxe" />
-      <YAxis width="auto" />
-      <Tooltip />
-      {
-        shotsList.map((key) => (
-          <Area type="monotone" dataKey={key} stackId="1" stroke={displayColor(colorChoice, false)} fill={displayColor(colorChoice, true)} />
-        ))
-      }
+    <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
+      <h1 className="text-lg font-semibold"> no content yet</h1>
+      <AreaChart
+        style={{
+          width: "100%",
+          maxWidth: "700px",
+          maxHeight: "70vh",
+          aspectRatio: 1.618,
+        }}
+        responsive
+        data={chartDatas}
+        margin={{
+          top: 20,
+          right: 0,
+          left: 0,
+          bottom: 0,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="xAxe" />
+        <YAxis width="auto" />
+        <Tooltip />
+        {
+          shotsList.map((key) => (
+            <Area type="monotone" dataKey={key} stackId="1" stroke={displayColor(colorChoice, false)} fill={displayColor(colorChoice, true)} />
+          ))
+        }
     </AreaChart>
-    </>
+    </div>
   );
-};
+}

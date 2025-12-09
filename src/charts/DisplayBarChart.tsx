@@ -43,41 +43,47 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
     );
   };
   return (
-    <div>
-      <select
-        value={selectedData}
-        onChange={(e) => setSelectedData(e.target.value)}
-      >
-        <option value="percent">{percent}</option>
-        <option value="nb">{nb}</option>
-      </select>
-      <BarChart
-        style={{
-          width: "100%",
-          maxWidth: "700px",
-          maxHeight: "70vh",
-          aspectRatio: 1.618,
-        }}
-        responsive
-        data={chartDatas}
-        margin={{
-          top: 5,
-          right: 0,
-          left: 0,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="xAxe" />
-        <YAxis width="auto" />
-        <Tooltip content={CustomTooltip} />
-        <Legend />
-        <Bar
-          dataKey={dataKeyBar}
-          fill="#8884d8"
-          activeBar={<Rectangle fill="pink" stroke="blue" />}
-        />
-      </BarChart>
+    <div className=" px-10 py-5 border-2 border-gray-200 rounded-lg">
+      <h1 className=" mb-5 text-lg font-semibold">
+        {" "}
+        Répartition par type de tournage
+      </h1>
+      <div>
+        <select
+          value={selectedData}
+          onChange={(e) => setSelectedData(e.target.value)}
+        >
+          <option value="percent">{percent}</option>
+          <option value="nb">{nb}</option>
+        </select>
+        <BarChart
+          style={{
+            width: "100%",
+            maxWidth: "700px",
+            maxHeight: "70vh",
+            aspectRatio: 1.618,
+          }}
+          responsive
+          data={chartDatas}
+          margin={{
+            top: 5,
+            right: 0,
+            left: 0,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="xAxe" />
+          <YAxis width="auto" />
+          <Tooltip content={CustomTooltip} />
+          <Legend />
+          <Bar
+            dataKey={dataKeyBar}
+            fill="#8884d8"
+            activeBar={<Rectangle fill="pink" stroke="blue" />}
+          />
+        </BarChart>
+      </div>
     </div>
   );
 }

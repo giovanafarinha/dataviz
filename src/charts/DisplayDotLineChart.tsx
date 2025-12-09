@@ -44,25 +44,28 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
     );
   };
   return (
-    <>{Object.keys(chartDatas[0])}
-    <LineChart
-      style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
-      responsive
-      data={chartDatas}
-      margin={{
-        top: 5,
-        right: 10,
-        left: 0,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="xAxe" />
-      <YAxis width="auto" />
-      <Tooltip content={CustomTooltip} />
-      <Legend />
-      <Line type="monotone" dataKey="Nombre de tournages" stroke="#ffffff01" dot={CustomizedDot} activeDot={{ r: 0 }} />
-    </LineChart>
-    </>
+    <div className=" px-10 py-5 border-2 border-gray-200 rounded-lg">
+      <h1 className=" mb-5 text-lg font-semibold">
+        Top réalisateurs / réalisatrices
+      </h1>
+      <LineChart
+        style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
+        responsive
+        data={chartDatas}
+        margin={{
+          top: 5,
+          right: 10,
+          left: 0,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="xAxe" />
+        <YAxis width="auto" />
+        <Tooltip content={CustomTooltip} />
+        <Legend />
+        <Line type="monotone" dataKey="Nombre de tournages" stroke="#ffffff01" dot={CustomizedDot} activeDot={{ r: 0 }} />
+      </LineChart>
+    </div>
   );
-};
+}

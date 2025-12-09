@@ -73,7 +73,7 @@ export default function Home() {
                 <img src={imageTwo} alt="man" />
               </div>
               <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
-                <img src={imageThree} alt="man" />
+                <img src={imageThree} alt="man" className="hover:opacity-25" />
               </div>
               <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-indigo-600 place-content-around items-center text-center">
                 <img src={imageFour} alt="man" />
