@@ -1,24 +1,27 @@
 import {
-  LineChart, Line,
-  XAxis, YAxis,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
-} from 'recharts';
+  Legend,
+} from "recharts";
 import { type chartsDatabase } from "../types/chartsTypes";
 
 export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
   return (
-    <div className="px-10 py-5 border-2 border-gray-200 rounded-lg">
-      <h1 className="mb-5 text-lg font-semibold">
-        Shooting count evolution per année
+    <div className=" sepia-60 px-10 py-5 border-2 border-indigo-600  rounded-lg bg-white text-white">
+      <h1 className="mb-5 text-lg font-semibold text-black">
+        Shooting count evolution each year
       </h1>
       <LineChart
+        className="bg-white"
         style={{
           width: "100%",
           maxWidth: "700px",
           height: "100%",
-          maxHeight: "70vh",
+          maxHeight: "88%",
           aspectRatio: 1.618,
         }}
         responsive

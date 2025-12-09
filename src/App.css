@@ -12,7 +12,10 @@
     }
   }
 }
-
+body {
+  background-color: #f5f7f8;
+  color: black;
+}
 /* —— hide the scrollbar —— */
 .carousel::-webkit-scrollbar {
   display: none;
@@ -23,6 +26,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   pointer-events: none;
+  animation-direction: alternate;
 }
 
 .spin-15 {

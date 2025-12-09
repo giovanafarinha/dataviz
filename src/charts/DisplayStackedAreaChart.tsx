@@ -37,9 +37,10 @@ export default function DisplayStackedAreaChart({
   }
   shotList(chartDatas[0] as chartModel);
   return (
-    <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
-      <h1 className="text-lg font-semibold"> Types × Years</h1>
+    <div className="sepia-60 px-5 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
+      <h1 className="text-lg font-semibold">Types × Years</h1>
       <AreaChart
+        className="bg-white"
         style={{
           width: "100%",
           maxWidth: "700px",

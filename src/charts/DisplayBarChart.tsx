@@ -1,7 +1,10 @@
 import { useState } from "react";
 import {
-  BarChart, Bar, Rectangle,
-  XAxis, YAxis,
+  BarChart,
+  Bar,
+  Rectangle,
+  XAxis,
+  YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
@@ -43,19 +46,23 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
     );
   };
   return (
-    <div className=" px-10 py-5 border-2 border-gray-200 rounded-lg">
-      <h1 className=" mb-5 text-lg font-semibold">
+    <div className="sepia-60 px-10 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
+      <h1 className="text-lg font-semibold">
         Shooting types distribution
       </h1>
       <div>
-        <select
-          value={selectedData}
-          onChange={(e) => setSelectedData(e.target.value)}
-        >
-          <option value="percent">{percent}</option>
-          <option value="nb">{nb}</option>
-        </select>
+        <div>
+          <select
+            className="bg-indigo-200 rounded-lg px-2 py-2 mb-5"
+            value={selectedData}
+            onChange={(e) => setSelectedData(e.target.value)}
+          >
+            <option value="percent">{percent}</option>
+            <option value="nb">{nb}</option>
+          </select>
+        </div>
         <BarChart
+          className="bg-white"
           style={{
             width: "100%",
             maxWidth: "700px",

@@ -2,11 +2,11 @@ import drawteamwork from "../assets/undraw_teamwork.svg";
 export default function About() {
   return (
     <>
-      <div className=" bg-yellow-100 px-25 py-15 rounded-xl mt-15 m-15 flex flex-col shadow-xl">
-        <h1 className="font-semibold text-5xl">À propos </h1>
-        <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} />
+      <div className=" sepia-70 bg-indigo-300 px-25 py-15 rounded-xl mt-15 m-15 flex flex-col shadow-xl">
+        <h1 className="font-semibold text-5xl">About </h1>{" "}
+        <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} />{" "}
         <div className="">
-          <h1 className="font-semibold text-3xl ">Notre histoire</h1>
+          <h1 className="font-semibold text-3xl ">Our background</h1>
           <p className="mb-15">
             Our project was born from an academic challenge: create an application
             capable of retrieving, manipulating and presenting data from
@@ -21,7 +21,7 @@ export default function About() {
           </p>
         </div>
         <div className="">
-          <h1 className="font-semibold text-3xl "> Notre mission</h1>
+          <h1 className="font-semibold text-3xl "> Our mission</h1>
           <p>
             Our mission is to make the data understandable and
             accessible to all. Through interactive graphics, we
