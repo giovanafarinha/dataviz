@@ -1,8 +1,6 @@
 import {
-  ComposedChart,
-  Area,
-  XAxis,
-  YAxis,
+  ComposedChart, Area,
+  XAxis, YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
@@ -12,7 +10,7 @@ import { type chartsDatabase } from "../types/chartsTypes";
 export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
   return (
     <div className="sepia-60  px-5 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
-      <h1 className="text-lg font-semibold"> Tournages par arrondissement </h1>
+      <h1 className="text-lg font-semibold">Shooting per district</h1>
       <ComposedChart
         className="bg-white "
         layout="vertical"
@@ -42,7 +40,7 @@ export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
         />
         <Tooltip />
         <Legend />
-        <Area dataKey="Nombre de tournages" fill="#8884d8" stroke="#8884d8" />
+        <Area dataKey="Shooting count" fill="#8884d8" stroke="#8884d8" />
       </ComposedChart>
     </div>
   );

@@ -13,7 +13,7 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
   return (
     <div className=" sepia-60 px-10 py-5 border-2 border-indigo-600  rounded-lg bg-white text-white">
       <h1 className="mb-5 text-lg font-semibold text-black">
-        Évolution du nombre de tournages par année
+        Shooting count evolution each year
       </h1>
       <LineChart
         className="bg-white"
@@ -40,7 +40,7 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
         <Legend />
         <Line
           type="monotone"
-          dataKey="Nombre de tournages"
+          dataKey="Shooting count"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />

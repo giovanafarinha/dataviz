@@ -15,8 +15,8 @@ import { type chartsDatabase } from "../types/chartsTypes";
 export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
   const [selectedData, setSelectedData] = useState("percent");
   const displayPercent = selectedData == "percent" ? true : false;
-  const percent = "Poucentage de tournages";
-  const nb = "Nombre de tournages";
+  const percent = "Shooting percent";
+  const nb = "Shooting count";
   const dataKeyBar = displayPercent ? percent : nb;
   const CustomTooltip = ({
     active,
@@ -35,7 +35,7 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
             <p
               className="desc text-indigo-400"
               style={{ display: !displayPercent ? "inherit" : "none" }}
-            >{`${payload[0].value} tournages`}</p>
+            >{`${payload[0].value} shootings`}</p>
             <p
               className="desc text-indigo-400"
               style={{ display: displayPercent ? "inherit" : "none" }}
@@ -48,8 +48,7 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
   return (
     <div className="sepia-60 px-10 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
       <h1 className="text-lg font-semibold">
-        {" "}
-        Répartition par type de tournage
+        Shooting types distribution
       </h1>
       <div>
         <div>

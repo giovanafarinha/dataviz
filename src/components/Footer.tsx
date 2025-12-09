@@ -9,17 +9,7 @@ export default function Footer() {
           <div className="">
             <h2 className="font-semibold">Credits</h2>
             <p className="font-light">
-              this project was coded with passion by{" "}
-              <a className="underline" href="https://github.com/Theufyr">
-                {" "}
-                Theufy{" "}
-              </a>{" "}
-              and{" "}
-              <a className="underline" href="https://github.com/giovanafarinha">
-                {" "}
-                Giovana
-              </a>{" "}
-              ,open-sourced on GitHub hosted on Vercel.
+              This project was coded with passion by <a className="underline" href="https://github.com/giovanafarinha">Giovana</a> & <a className="underline" href="https://github.com/Theufyr">Theufyr</a>, open-sourced on GitHub hosted on Vercel.
             </p>
             <nav className=" mt-5 -mb-45 justify-around flex">
               <NavLink className="cursor-pointer hover:text-red-700" to="/">
@@ -40,7 +30,7 @@ export default function Footer() {
             </nav>
           </div>
           <div className="ml-5  py-5">
-            <h2 className="font-semibold"> Ressources utiles</h2>
+            <h2 className="font-semibold">Useful ressources</h2>
             <ul>
               <li className="font-light">
                 Documentation-

@@ -8,13 +8,11 @@ import imageSix from "../assets/imageSix.jpg";
 export default function Home() {
   return (
     <>
-      {" "}
       {/* injected the background video here  */}
       <video className="h-40lw-40 l w-full rounded-lg" autoPlay muted loop>
         <source src={bgvideo} type="video/webm" />
       </video>
       <section className="flex flex-row">
-        {" "}
         {/* section of heading-container */}
         <h1 className="text-shadow-2xs text-8xl sepia-70 text-indigo-200 flex -mt-75 font-bbh">
           Dataviz Cinema
@@ -29,34 +27,34 @@ export default function Home() {
           <div className="flex gap-6 justify-items-start py-5 px-5 ">
             <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
               01
-              <h2 className="font-semibold">Tendances annuelles </h2>
+              <h2 className="font-semibold">Actual trends</h2>
               <p className="font-light">
-                Nombre de tournages par année pour repérer les pics d’activité.
+                Shooting count per année to catch activity peaks.
               </p>
             </div>
             <div className="bg-indigo-200 text-black border-1 border-gray-600 rounded-lg px-5 py-5 shadow-lg">
               02
-              <h2 className="font-semibold">Types de tournage</h2>
+              <h2 className="font-semibold">Shooting types</h2>
               <p className="font-light">
-                Long métrage, Série TV, Téléfilm… suivez l’évolution par type.
+                Movies, TV-shows, Web series… follow the evolution by type.
               </p>
             </div>
             <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-13 py-5 shadow-xl">
               03
-              <h2 className="font-semibold">Graph des arrondissements </h2>
+              <h2 className="font-semibold">Chart of districts</h2>
               <p className="font-light">
-                Répartition des tournages par arrondissement parisien.
+                Shootings in parisian districts.
               </p>
             </div>
             <div className="bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-14 py-5">
               04
-              <h2 className="font-semibold">Top réalisateurs</h2>
+              <h2 className="font-semibold">Top of directors</h2>
               <p className="font-light">
-                Classement des réalisateurs les plus présents à Paris.
+                Ranking of the directors in Paris.
               </p>
             </div>
           </div>
-        </section>{" "}
+        </section>
       </section>
       {/*  carousel container */}
       <div className="flex gap-6 scroll-animation">
