@@ -10,7 +10,7 @@ export default function Footer() {
             01
             <h2 className="font-semibold">Credits</h2>
             <p className="font-light">
-              this project was coded with passion by <a className="underline" href="https://github.com/giovanafarinha">Giovana</a> & <a className="underline" href="https://github.com/Theufyr">Theufyr</a>, open-sourced on GitHub hosted on Vercel.
+              This project was coded with passion by <a className="underline" href="https://github.com/giovanafarinha">Giovana</a> & <a className="underline" href="https://github.com/Theufyr">Theufyr</a>, open-sourced on GitHub hosted on Vercel.
             </p>
             <nav className=" justify-around px-5 py-5 mt-10 flex">
               <NavLink className="cursor-pointer hover:text-red-700" to="/">Home</NavLink>
@@ -20,9 +20,9 @@ export default function Footer() {
           </div>
           <div className="ml-5 px-5 py-5">
             02
-            <h2 className="font-semibold"> Ressources utiles</h2>
-            <ul>
-              <li className="font-light">
+            <h2 className="font-semibold"> Useful ressources</h2>
+            <ul className="font-light">
+              <li>
                 Documentation-
                 <a className="underline" href=" https://tailwindcss.com/">
                   Tailwind

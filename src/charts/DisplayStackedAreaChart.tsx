@@ -1,8 +1,6 @@
 import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
+  AreaChart, Area,
+  XAxis, YAxis,
   CartesianGrid,
   Tooltip,
 } from "recharts";
@@ -40,7 +38,7 @@ export default function DisplayStackedAreaChart({
   shotList(chartDatas[0] as chartModel);
   return (
     <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
-      <h1 className="text-lg font-semibold"> Types × Année</h1>
+      <h1 className="text-lg font-semibold"> Types × Years</h1>
       <AreaChart
         style={{
           width: "100%",

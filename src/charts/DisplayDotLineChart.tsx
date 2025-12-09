@@ -37,7 +37,7 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
             <p className="label">{label}</p>
             <p
               className="desc text-indigo-400"
-            >{`${payload[0].value} tournages`}</p>
+            >{`${payload[0].value} shootings`}</p>
           </>
         )}
       </div>
@@ -46,7 +46,7 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
   return (
     <div className=" px-10 py-5 border-2 border-gray-200 rounded-lg">
       <h1 className=" mb-5 text-lg font-semibold">
-        Top réalisateurs / réalisatrices
+        Top directors
       </h1>
       <LineChart
         style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
@@ -64,7 +64,7 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
         <YAxis width="auto" />
         <Tooltip content={CustomTooltip} />
         <Legend />
-        <Line type="monotone" dataKey="Nombre de tournages" stroke="#ffffff01" dot={CustomizedDot} activeDot={{ r: 0 }} />
+        <Line type="monotone" dataKey="Shooting count" stroke="#ffffff01" dot={CustomizedDot} activeDot={{ r: 0 }} />
       </LineChart>
     </div>
   );
