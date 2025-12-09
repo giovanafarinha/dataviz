@@ -56,7 +56,7 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
     const isVisible = active && payload && payload.length;
     return (
       <div
-        className="p-3 text-center bg-gray-200 border-1 border-solid border-gray-200"
+        className="p-3 text-center bg-gray-200 border-1 border-solid border-gray-400"
         style={{ visibility: isVisible ? "visible" : "hidden" }}
       >
         {isVisible && (
