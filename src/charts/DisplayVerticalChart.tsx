@@ -2,12 +2,32 @@ import {
   ComposedChart, Area,
   XAxis, YAxis,
   CartesianGrid,
-  Tooltip,
   Legend,
+  Tooltip,
+  type TooltipContentProps,
 } from "recharts";
 import { type chartsDatabase } from "../types/chartsTypes";
 
-export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
+export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {const CustomTooltip = ({
+    active,
+    payload,
+    label,
+  }: TooltipContentProps<string | number, string>) => {
+    const isVisible = active && payload && payload.length;
+    return (
+      <div
+        className="p-3 text-center bg-gray-200 border-1 border-solid border-gray-400"
+        style={{ visibility: isVisible ? "visible" : "hidden" }}
+      >
+        {isVisible && (
+          <>
+            <p className="label">{label}</p>
+            <p className="desc text-indigo-400">{`${payload[0].value} shootings`}</p>
+          </>
+        )}
+      </div>
+    );
+  };
   return (
     <div className="sepia-60  px-5 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
       <h1 className="text-lg font-semibold">Shooting per district</h1>
@@ -38,7 +58,7 @@ export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
           width="auto"
           interval={0}
         />
-        <Tooltip />
+        <Tooltip content={CustomTooltip} />
         <Legend />
         <Area dataKey="Shooting count" fill="#8884d8" stroke="#8884d8" />
       </ComposedChart>

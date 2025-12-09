@@ -6,9 +6,7 @@ import {
 } from "recharts";
 import { type chartsDatabase, type chartModel } from "../types/chartsTypes";
 
-export default function DisplayStackedAreaChart({
-  chartDatas,
-}: chartsDatabase) {
+export default function DisplayStackedAreaChart({chartDatas}: chartsDatabase) {
   // liste des couleurs de graphiques
   let colorChoice = 0;
   const chartColors = [

@@ -6,10 +6,30 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  type TooltipContentProps,
 } from "recharts";
 import { type chartsDatabase } from "../types/chartsTypes";
 
 export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
+  const CustomTooltip = ({
+    active,
+    payload,
+    label,
+  }: TooltipContentProps<string | number, string>) => {
+    const isVisible = active && payload && payload.length;
+    return (
+      <div
+        className="p-3 text-center bg-gray-200 border-1 border-solid border-gray-400"
+        style={{ visibility: isVisible ? "visible" : "hidden" }}
+      >
+        {isVisible && (
+          <>
+            <p className="desc text-indigo-400">{`${payload[0].value} shootings`}</p>
+          </>
+        )}
+      </div>
+    );
+  };
   return (
     <div className=" sepia-60 px-10 py-5 border-2 border-indigo-600  rounded-lg bg-white text-white">
       <h1 className="mb-5 text-lg font-semibold text-black">
@@ -36,7 +56,7 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="xAxe" />
         <YAxis width="auto" />
-        <Tooltip />
+        <Tooltip content={CustomTooltip} />
         <Legend />
         <Line
           type="monotone"
