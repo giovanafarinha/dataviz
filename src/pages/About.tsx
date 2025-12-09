@@ -3,10 +3,10 @@ export default function About() {
   return (
     <>
       <div className=" bg-yellow-100 px-25 py-15 rounded-xl mt-15 m-15 flex flex-col shadow-xl">
-        <h1 className="font-semibold text-5xl"> About us </h1>{" "}
+        <h1 className="font-semibold text-5xl">À propos </h1>{" "}
         <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} />{" "}
         <div className="">
-          <h1 className="font-semibold text-3xl ">Our Story</h1>
+          <h1 className="font-semibold text-3xl ">Notre histoire</h1>
           <p className="mb-15">
             {" "}
             Notre projet est né d’un défi académique : créer une application
@@ -22,7 +22,7 @@ export default function About() {
           </p>{" "}
         </div>
         <div className="">
-          <h1 className="font-semibold text-3xl ">Our Mission</h1>
+          <h1 className="font-semibold text-3xl "> Notre mission</h1>
           <p>
             {" "}
             Notre mission est de rendre les données compréhensibles et

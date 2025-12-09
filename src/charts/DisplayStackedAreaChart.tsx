@@ -1,18 +1,27 @@
 import {
-  AreaChart, Area,
-  XAxis, YAxis,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
   CartesianGrid,
-  Tooltip
-} from 'recharts';
+  Tooltip,
+} from "recharts";
 import { type chartsDatabase, type chartModel } from "../types/chartsTypes";
 
-
-export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) {
+export default function DisplayStackedAreaChart({
+  chartDatas,
+}: chartsDatabase) {
   // liste des couleurs de graphiques
   let colorChoice = 0;
-  const chartColors = ["#8884d8", "#82ca9d", "#ffc658", "#f17d7dff", "#7df1deff"];
+  const chartColors = [
+    "#8884d8",
+    "#82ca9d",
+    "#ffc658",
+    "#f17d7dff",
+    "#7df1deff",
+  ];
   function displayColor(color: number, change: boolean) {
-    colorChoice = (color < 5) ? color : 0;
+    colorChoice = color < 5 ? color : 0;
     const returnColor = chartColors[colorChoice];
     if (change) {
       colorChoice++;
@@ -31,7 +40,7 @@ export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) 
   shotList(chartDatas[0] as chartModel);
   return (
     <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
-      <h1 className="text-lg font-semibold"> no content yet</h1>
+      <h1 className="text-lg font-semibold"> Types × Année</h1>
       <AreaChart
         style={{
           width: "100%",
@@ -52,12 +61,16 @@ export default function DisplayStackedAreaChart({ chartDatas }: chartsDatabase) 
         <XAxis dataKey="xAxe" />
         <YAxis width="auto" />
         <Tooltip />
-        {
-          shotsList.map((key) => (
-            <Area type="monotone" dataKey={key} stackId="1" stroke={displayColor(colorChoice, false)} fill={displayColor(colorChoice, true)} />
-          ))
-        }
-    </AreaChart>
+        {shotsList.map((key) => (
+          <Area
+            type="monotone"
+            dataKey={key}
+            stackId="1"
+            stroke={displayColor(colorChoice, false)}
+            fill={displayColor(colorChoice, true)}
+          />
+        ))}
+      </AreaChart>
     </div>
   );
 }
