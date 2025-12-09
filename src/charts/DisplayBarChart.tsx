@@ -26,7 +26,7 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
     const isVisible = active && payload && payload.length;
     return (
       <div
-        className="p-3 text-center bg-white border-1 border-solid border-gray-300"
+        className="p-3 text-center bg-gray-200 border-1 border-solid border-gray-400 "
         style={{ visibility: isVisible ? "visible" : "hidden" }}
       >
         {isVisible && (
@@ -47,9 +47,7 @@ export default function DisplayBarChart({ chartDatas }: chartsDatabase) {
   };
   return (
     <div className="sepia-60 px-10 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
-      <h1 className="text-lg font-semibold">
-        Shooting types distribution
-      </h1>
+      <h1 className="text-lg font-semibold">Shooting types distribution</h1>
       <div>
         <div>
           <select

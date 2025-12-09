@@ -56,7 +56,7 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
     const isVisible = active && payload && payload.length;
     return (
       <div
-        className="p-3 text-center bg-white border-1 border-solid border-gray-300"
+        className="p-3 text-center bg-gray-200 border-1 border-solid border-gray-200"
         style={{ visibility: isVisible ? "visible" : "hidden" }}
       >
         {isVisible && (
@@ -69,10 +69,8 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
     );
   };
   return (
-    <div className="sepia-60  px-10 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
-      <h1 className=" mb-5 text-lg font-semibold">
-        Top directors
-      </h1>
+    <div className="sepia-60 px-10 py-5 border-2 border-indigo-600 rounded-lg bg-white text-black">
+      <h1 className=" mb-5 text-lg font-semibold">Top directors</h1>
       <LineChart
         className="bg-white"
         style={{
@@ -95,7 +93,13 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
         <YAxis width="auto" />
         <Tooltip content={CustomTooltip} />
         <Legend />
-        <Line type="monotone" dataKey="Shooting count" stroke="#ffffff01" dot={CustomizedDot} activeDot={{ r: 0 }} />
+        <Line
+          type="monotone"
+          dataKey="Shooting count"
+          stroke="#ffffff01"
+          dot={CustomizedDot}
+          activeDot={{ r: 0 }}
+        />
       </LineChart>
     </div>
   );

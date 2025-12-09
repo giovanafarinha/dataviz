@@ -42,16 +42,12 @@ export default function Home() {
             <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-13 py-5 shadow-xl">
               03
               <h2 className="font-semibold">Chart of districts</h2>
-              <p className="font-light">
-                Shootings in parisian districts.
-              </p>
+              <p className="font-light">Shootings in parisian districts.</p>
             </div>
             <div className="bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-14 py-5">
               04
               <h2 className="font-semibold">Top of directors</h2>
-              <p className="font-light">
-                Ranking of the directors in Paris.
-              </p>
+              <p className="font-light">Ranking of the directors in Paris.</p>
             </div>
           </div>
         </section>
