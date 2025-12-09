@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <section className=" w-365 bg-black text-white flex flex-col border-1 mt-5 rounded-lg px-15 py-10">
+      <section className=" w-368 bg-black text-white flex flex-col border-1 mt-5 rounded-lg px-15 py-10">
         <div className="grid grid-cols-2 gap-6 justify-items-center">
           <div className="">
             <h2 className="font-semibold">Credits</h2>

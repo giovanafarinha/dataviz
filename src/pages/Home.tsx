@@ -22,9 +22,9 @@ export default function Home() {
             arrondissements, réalisateurs et plus encore. </p>
  */}
         </h1>
-        <section className=" sepia-70 flex flex-col -ml-240 m-0 px-15">
+        <section className=" sepia-70 flex flex-col  justify-center align-center m-0 px-15">
           {/* section of boxes-container */}
-          <div className="flex gap-6 justify-items-start py-5 px-5 ">
+          <div className="flex gap-6  -ml-240 py-5 px-5 ">
             <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
               01
               <h2 className="font-semibold">Actual trends</h2>
@@ -54,7 +54,7 @@ export default function Home() {
       </section>
       {/*  carousel container */}
       <div className="flex gap-6 scroll-animation">
-        <div className="m-5 w-360 h-70 border-black flex border-15 border-red overflow-x-auto gap-34 carousel">
+        <div className="w-368 h-70 border-black flex border-15 border-red overflow-x-auto gap-34 carousel">
           {/*  group container */}
 
           <div className="spin-15 flex gap-3 sepia-70">
