@@ -10,34 +10,12 @@ export default function Footer() {
             01
             <h2 className="font-semibold">Credits</h2>
             <p className="font-light">
-              this project was coded with passion by{" "}
-              <a className="underline" href="https://github.com/Theufyr">
-                {" "}
-                Theufy{" "}
-              </a>{" "}
-              and{" "}
-              <a className="underline" href="https://github.com/giovanafarinha">
-                {" "}
-                Giovana
-              </a>{" "}
-              ,open-sourced on GitHub hosted on Vercel.
+              this project was coded with passion by <a className="underline" href="https://github.com/giovanafarinha">Giovana</a> & <a className="underline" href="https://github.com/Theufyr">Theufyr</a>, open-sourced on GitHub hosted on Vercel.
             </p>
             <nav className=" justify-around px-5 py-5 mt-10 flex">
-              <NavLink className="cursor-pointer hover:text-red-700" to="/">
-                Home
-              </NavLink>
-              <NavLink
-                className="cursor-pointer hover:text-red-700"
-                to="/analysis"
-              >
-                Analysis
-              </NavLink>
-              <NavLink
-                className="cursor-pointer hover:text-red-700"
-                to="/about"
-              >
-                About
-              </NavLink>
+              <NavLink className="cursor-pointer hover:text-red-700" to="/">Home</NavLink>
+              <NavLink className="cursor-pointer hover:text-red-700" to="/analysis">Analysis</NavLink>
+              <NavLink className="cursor-pointer hover:text-red-700" to="/about">About</NavLink>
             </nav>
           </div>
           <div className="ml-5 px-5 py-5">

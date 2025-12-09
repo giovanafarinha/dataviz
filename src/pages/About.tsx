@@ -3,12 +3,11 @@ export default function About() {
   return (
     <>
       <div className=" bg-yellow-100 px-25 py-15 rounded-xl mt-15 m-15 flex flex-col shadow-xl">
-        <h1 className="font-semibold text-5xl">À propos </h1>{" "}
-        <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} />{" "}
+        <h1 className="font-semibold text-5xl">À propos </h1>
+        <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} />
         <div className="">
           <h1 className="font-semibold text-3xl ">Notre histoire</h1>
           <p className="mb-15">
-            {" "}
             Notre projet est né d’un défi académique : créer une application
             capable de récupérer, manipuler et présenter des données provenant
             d’une API externe. Avec React.js et TypeScript comme technologies
@@ -19,12 +18,11 @@ export default function About() {
             et de transformer des données brutes en visualisations claires et
             accessibles. Chaque étape du processus a renforcé notre volonté de
             créer une application intuitive, fiable et agréable à utiliser.
-          </p>{" "}
+          </p>
         </div>
         <div className="">
           <h1 className="font-semibold text-3xl "> Notre mission</h1>
           <p>
-            {" "}
             Notre mission est de rendre les données compréhensibles et
             accessibles à tous. À travers des graphiques interactifs, nous
             souhaitons offrir une manière simple et efficace d’analyser
