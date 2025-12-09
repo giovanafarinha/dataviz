@@ -11,8 +11,8 @@ import { type chartsDatabase } from "../types/chartsTypes";
 
 export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
   return (
-    <>
-    
+    <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
+      <h1 className="text-lg font-semibold"> Tournages par arrondissement </h1>
       <ComposedChart
         layout="vertical"
         style={{
@@ -43,6 +43,6 @@ export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
         <Legend />
         <Area dataKey="Nombre de tournages" fill="#8884d8" stroke="#8884d8" />
       </ComposedChart>
-    </>
+    </div>
   );
 }

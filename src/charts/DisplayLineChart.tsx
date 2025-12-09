@@ -11,7 +11,10 @@ import { type chartsDatabase } from "../types/chartsTypes";
 
 export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
   return (
-    <>
+    <div className="px-10 py-5 border-2 border-gray-200 rounded-lg">
+      <h1 className="mb-5 text-lg font-semibold">
+        Évolution du nombre de tournages par année
+      </h1>
       <LineChart
         style={{
           width: "100%",
@@ -41,6 +44,6 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
           activeDot={{ r: 8 }}
         />
       </LineChart>
-    </>
+    </div>
   );
 }

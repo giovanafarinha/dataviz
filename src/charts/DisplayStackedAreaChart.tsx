@@ -12,7 +12,8 @@ export default function DisplayStackedAreaChart({
   chartDatas,
 }: chartsDatabase) {
   return (
-    <>
+    <div className=" px-5 py-5 border-2 border-gray-200 rounded-lg">
+      <h1 className="text-lg font-semibold"> no content yet</h1>
       <AreaChart
         style={{
           width: "100%",
@@ -62,6 +63,6 @@ export default function DisplayStackedAreaChart({
           fill="#caff58ff"
         />
       </AreaChart>
-    </>
+    </div>
   );
 }
