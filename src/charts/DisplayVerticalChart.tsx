@@ -37,7 +37,6 @@ export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
         layout="vertical"
         style={{
           width: "100%",
-          maxWidth: "300px",
           maxHeight: "70vh",
           aspectRatio: 1 / 1.618,
         }}
@@ -61,7 +60,7 @@ export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
         />
         <Tooltip content={CustomTooltip} />
         <Legend />
-        <Area dataKey="Shooting count" fill="#8884d8" stroke="#8884d8" />
+        <Area dataKey="Shooting count" fill="#8884d8" stroke="#8884d8" activeDot={{ r: 8 }} />
       </ComposedChart>
     </div>
   );

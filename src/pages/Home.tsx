@@ -53,7 +53,7 @@ export default function Home() {
       </section>
       {/*  carousel container */}
       <div className="flex gap-6 scroll-animation">
-        <div className="w-368 h-70 border-black flex border-15 border-red overflow-x-auto gap-34 carousel">
+        <div className="w-[100%] h-70 border-black flex border-15 border-red overflow-x-auto gap-34 carousel">
           {/*  group container */}
 
           <div className="spin-15 flex gap-3 sepia-70">

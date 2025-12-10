@@ -41,8 +41,7 @@ export default function DisplayStackedAreaChart({chartDatas}: chartsDatabase) {
         className="bg-white"
         style={{
           width: "100%",
-          maxWidth: "700px",
-          maxHeight: "70vh",
+          height: "85%",
           aspectRatio: 1.618,
         }}
         responsive

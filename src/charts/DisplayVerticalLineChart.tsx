@@ -24,7 +24,7 @@ export default function DisplayVerticalLineChart({ chartDatas }: chartsDatabase)
       >
         {isVisible && (
           <>
-            <p className="label">{label}</p>
+            <p className="label text-black">{label}</p>
             <p className="desc text-indigo-400">{`${payload[0].value} shootings`}</p>
           </>
         )}
@@ -39,25 +39,24 @@ export default function DisplayVerticalLineChart({ chartDatas }: chartsDatabase)
       layout="vertical"
       style={{
           width: "100%",
-          maxWidth: "300px",
           maxHeight: "70vh",
           aspectRatio: 1 / 1.618
       }}
       responsive
       data={chartDatas}
       margin={{
-        top: 5,
+        top: 0,
         right: 0,
         left: 0,
-        bottom: 5,
+        bottom: 15,
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis type="number" domain={[0, 'dataMax + 1000']} />
-      <YAxis dataKey="xAxe" type="category" width="auto" />
+      <XAxis type="number" domain={['dataMin', 'dataMax']} padding={{ left: 5, right: 10 }} interval="preserveStartEnd" />
+      <YAxis dataKey="xAxe" type="category" width="auto" interval="preserveStart" padding={{ top: 10 }} />
       <Tooltip content={CustomTooltip} />
       <Legend />
-      <Line dataKey="Shooting count" stroke="#8884d8" />
+      <Line dataKey="Shooting count" stroke="#8884d8" activeDot={{ r: 8 }} />
     </LineChart>
     </div>
   );
