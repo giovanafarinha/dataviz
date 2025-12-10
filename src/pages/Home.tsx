@@ -3,7 +3,6 @@ import imageTwo from "../assets/imageTwo.jpg";
 import imageThree from "../assets/imageThree.jpg";
 import imageFour from "../assets/imageFour.jpg";
 import imageFive from "../assets/imageFive.jpg";
-
 import imageSix from "../assets/imageSix.jpg";
 export default function Home() {
   return (

@@ -14,19 +14,16 @@ export default function apiQuery(params: apiParams) {
       const url = new URL(
         "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records"
       );
-      const addType = (params.query == "typesXyears") ? ", type_tournage" : "";
+      const addType = params.query == "typesXyears" ? ", type_tournage" : "";
       let selectParam = `${params.select}`;
-      if ((params.query == "years") || (params.query == "typesXyears")) {
+      if (params.query == "years" || params.query == "typesXyears") {
         selectParam = `year(${params.select}) as year${addType}`;
       }
       url.searchParams.set(
         "select",
         `${selectParam}, count(${params.select}) as total`
       );
-      url.searchParams.set(
-        "group_by",
-        params.select + addType
-      );
+      url.searchParams.set("group_by", params.select + addType);
       if (params.query == "ardt") {
         url.searchParams.set(
           "where",
@@ -39,16 +36,11 @@ export default function apiQuery(params: apiParams) {
           `${params.select} >=  ${params.startYear} AND ${params.select} <= ${params.endYear}`
         );
       }
-      if (params.query == "directors") {
-        url.searchParams.set(
-          "where",
-          `${params.select} is not null`
-        );
+
+      if (params.query == "directors" || params.query == "producers") {
+        url.searchParams.set("where", `${params.select} is not null`);
       }
-      url.searchParams.set(
-        "order_by",
-        `${params.select}${addType} ASC`
-      );
+      url.searchParams.set("order_by", `${params.select}${addType} ASC`);
 
       // APPEL API ET RECUPERATION DES DONNEES
       // ------------------------------------------------------
@@ -60,16 +52,21 @@ export default function apiQuery(params: apiParams) {
       // ------------------------------------------------------
       // somme de tous les totaux pour créer des pourcentages
       const allTypesTotal = data.results.reduce(
-        (sum: number, { total }: apiTypes) => sum + total, 0);
+        (sum: number, { total }: apiTypes) => sum + total,
+        0
+      );
       // gestion du 16ème arrondissement divisé en 75016 et 75116
       let index75016: number = 0;
       let index75116: number = 0;
       let total75116: number = 0;
       // gestion des champs erronés de nom_realisateur
       const directorsIndexes: number[] = [];
-      
+
       // création des points du futur tableau avec ses coordonnées x et y
-      const chartDatas: chartsTypes[] = data.results.map(function (apiDatas: apiTypes, index: number) {
+      const chartDatas: chartsTypes[] = data.results.map(function (
+        apiDatas: apiTypes,
+        index: number
+      ) {
         const select: string = params.select;
         if (params.query == "ardt") {
           if (apiDatas[select] == 75116) {
@@ -79,7 +76,7 @@ export default function apiQuery(params: apiParams) {
             total75116 = apiDatas.total;
             index75116 = index;
           } else {
-            index75016 = (apiDatas[select] == 75016) ? index : index75016;
+            index75016 = apiDatas[select] == 75016 ? index : index75016;
             const chartPoint: chartsTypes = {
               xAxe: apiDatas[select],
               "Shooting count": apiDatas.total,
@@ -91,19 +88,21 @@ export default function apiQuery(params: apiParams) {
             xAxe: apiDatas[select],
             "Shooting count": apiDatas.total,
           };
-          if ((params.query == "years") || (params.query == "typesXyears")) {
+          if (params.query == "years" || params.query == "typesXyears") {
             chartPoint.xAxe = apiDatas.year;
           }
           if (params.query == "types") {
             // on traduit en anglais
-            const translateShootings: {[key: string]:string} = {
-                "Long métrage": "Movie",
-                "Série TV": "TV Series",
-                "Série Web": "Web Series",
-                "Téléfilm": "TV movie"
+            const translateShootings: { [key: string]: string } = {
+              "Long métrage": "Movie",
+              "Série TV": "TV Series",
+              "Série Web": "Web Series",
+              Téléfilm: "TV movie",
             };
             let translatedShooting = chartPoint.xAxe;
-            translatedShooting = (translateShootings[translatedShooting]) ? translateShootings[translatedShooting] : translatedShooting;
+            translatedShooting = translateShootings[translatedShooting]
+              ? translateShootings[translatedShooting]
+              : translatedShooting;
             chartPoint.xAxe = translatedShooting;
             // ajout d'un champ pourcentage
             chartPoint["Shooting percent"] = Math.round(
@@ -113,15 +112,16 @@ export default function apiQuery(params: apiParams) {
           if (params.query == "typesXyears") {
             chartPoint["type_tournage"] = apiDatas["type_tournage"];
           }
-          if (params.query == "directors") {
+          if (params.query == "directors" || params.query == "producers") {
             // on élimine les entrées vides ou ne contenant que des nombres
-            let directorName = (typeof chartPoint.xAxe == "string") ? chartPoint.xAxe : "";
+            let directorName =
+              typeof chartPoint.xAxe == "string" ? chartPoint.xAxe : "";
             directorName.trim();
-            directorName = (isNaN(Number(directorName))) ? directorName : "";
-            if (directorName != ""){
+            directorName = isNaN(Number(directorName)) ? directorName : "";
+            if (directorName != "") {
               chartPoint.xAxe = directorsNames(directorName);
             } else {
-              directorsIndexes.push(index); 
+              directorsIndexes.push(index);
             }
           }
           return chartPoint;
@@ -136,12 +136,12 @@ export default function apiQuery(params: apiParams) {
       if (params.query == "typesXyears") {
         typesXyearsSort(chartDatas);
       }
-      if (params.query == "directors") {
+      if (params.query == "directors" || params.query == "producers") {
         // on enlève les indexes indésirables
         directorsIndexes.map((dIndex: number) => {
           chartDatas.splice(dIndex, 1);
         });
-        const chartDatasFinal: {[key: string]: number} = {};
+        const chartDatasFinal: { [key: string]: number } = {};
         chartDatas.map(function (chartPoint: chartsTypes) {
           // on comptabilise le nombre de tournage pour ce réalisateur
           if (chartDatasFinal[chartPoint.xAxe]) {
@@ -157,8 +157,7 @@ export default function apiQuery(params: apiParams) {
           chartDatas.push({
             xAxe: director,
             "Shooting count": chartDatasFinal[director],
-          }
-          )
+          });
         });
         // on trie la liste
         chartDatas.sort((a, b) => b["Shooting count"] - a["Shooting count"]);
