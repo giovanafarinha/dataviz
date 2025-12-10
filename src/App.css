@@ -1,42 +1,40 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+@font-face {
+  font-family: 'BBH Sans Bartle';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./assets/fonts/bbhsansbartle.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@theme {
+  --font-bbh: "BBH Sans Bartle", sans-serif;
+  @keyframes spin15 {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-360px);
+    }
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #f5f7f8;
+  color: black;
+}
+/* —— hide the scrollbar —— */
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
-.card {
-  padding: 2em;
+/* ——desativing all the controls of the scroll bar —— */
+.carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  pointer-events: none;
+  animation-direction: alternate;
 }
 
-.read-the-docs {
-  color: #888;
+.spin-15 {
+  animation: spin15 15s linear infinite;
 }
