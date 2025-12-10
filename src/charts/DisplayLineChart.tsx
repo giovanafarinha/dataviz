@@ -14,7 +14,6 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
   const CustomTooltip = ({
     active,
     payload,
-    label,
   }: TooltipContentProps<string | number, string>) => {
     const isVisible = active && payload && payload.length;
     return (
@@ -54,7 +53,7 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="xAxe" />
+        <XAxis dataKey="xAxe" padding={{ right: 10 }} />
         <YAxis width="auto" />
         <Tooltip content={CustomTooltip} />
         <Legend />

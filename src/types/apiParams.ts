@@ -4,6 +4,7 @@ export type apiParams =
   | { query: "typesXyears"; select: string; startYear: number; endYear: number }
   | { query: "ardt"; select: string }
   | { query: "directors"; select: string }
+  | { query: "producers"; select: string }
 
 export interface chartProps {
   key: string | number;

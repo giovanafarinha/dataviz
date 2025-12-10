@@ -75,21 +75,20 @@ export default function DisplayDotLineChart({ chartDatas }: chartsDatabase) {
         className="bg-white"
         style={{
           width: "100%",
-          maxWidth: "700px",
-          maxHeight: "70vh",
+          height: "85%",
           aspectRatio: 1.618,
         }}
         responsive
         data={chartDatas}
         margin={{
-          top: 5,
+          top: 0,
           right: 10,
           left: 0,
-          bottom: 5,
+          bottom: 0,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="xAxe" />
+        <XAxis dataKey="xAxe" interval="preserveStart" padding={{ left: 10 }} />
         <YAxis width="auto" />
         <Tooltip content={CustomTooltip} />
         <Legend />

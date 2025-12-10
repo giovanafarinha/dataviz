@@ -4,5 +4,6 @@ export default interface apiTypes {
   type_tournage: string;
   ardt_lieu: number;
   nom_realisateur: number;
+  nom_producteur: number;
   total: number;
 }
