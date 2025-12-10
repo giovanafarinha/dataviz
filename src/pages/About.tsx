@@ -4,7 +4,7 @@ export default function About() {
     <>
       <div className=" sepia-70 bg-indigo-300 px-25 py-15 rounded-xl mt-15 m-15 flex flex-col shadow-xl">
         <h1 className="font-semibold text-5xl">About </h1>{" "}
-        <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} />{" "}
+        <img className=" flex ml-95 w-90 mb-5 mt-5" src={drawteamwork} alt="coworkers on cumputers"/>
         <div className="">
           <h1 className="font-semibold text-3xl ">Our background</h1>
           <p className="mb-15">

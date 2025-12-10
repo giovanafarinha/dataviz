@@ -8,13 +8,11 @@ import Home from "./pages/Home";
 import Analysis from "./pages/Analysis";
 import About from "./pages/About";
 import NavBar from "./components/NavBar";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const RootLayout = () => (
   <>
     <NavBar />
-    <Header />
     <Outlet /> {/* ///from react becoming page componant */}
     <Footer />
   </>
