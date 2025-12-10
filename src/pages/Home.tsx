@@ -23,7 +23,7 @@ export default function Home() {
         </h1>
         <section className=" sepia-70 flex flex-col  justify-center align-center m-0 px-15">
           {/* section of boxes-container */}
-          <div className="flex gap-6  -ml-240 py-5 px-5 ">
+          <div className=" flex gap-6  -ml-240 py-5 px-5 ">
             <div className=" bg-indigo-200 text-black border-1 border-indigo-600 rounded-lg px-5 py-5 shadow-xl">
               01
               <h2 className="font-semibold">Actual trends</h2>
@@ -60,56 +60,56 @@ export default function Home() {
             <div aria-hidden className="flex items-center justify-center gap-3">
               {/*  inside the card for each container */}
               <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageSix} alt="man" />
+                <img src={imageSix} alt="man" className="w-[100%]" />
               </div>
               <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageTwo} alt="man" />
+                <img src={imageTwo} alt="man" className="w-[100%]"/>
               </div>
               <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageThree} alt="man" />
+                <img src={imageThree} alt="man" className="w-[100%]" />
               </div>
               <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageFour} alt="man" />
+                <img src={imageFour} alt="man"className="w-[100%]" />
               </div>
               <div className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageFive} alt="man" />
+                <img src={imageFive} alt="man"className="w-[100%]" />
               </div>
               <div className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageThree} alt="man" />
+                <img src={imageThree} alt="man" className="w-[100%]" />
               </div>
               <div className=" flex gap-6 6 w-90 wpx-5 py-5 rounded-lg text-center bg-black place-content-around items-center text-center">
-                <img src={imageSix} alt="man" />
+                <img src={imageSix} alt="man" className="w-[100%]"/>
               </div>
               <div className="flex gap-6 scroll-animation">
                 <div
                   className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
  place-content-around items-center text-center"
                 >
-                  <img src={imageTwo} alt="man" />
+                  <img src={imageTwo} alt="man" className="w-[100%]"/>
                 </div>
                 <div
                   className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
  place-content-around items-center text-center"
                 >
-                  <img src={imageThree} alt="man" />
+                  <img src={imageThree} alt="man" className="w-[100%]" />
                 </div>
                 <div
                   className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
  place-content-around items-center text-center"
                 >
-                  <img src={imageFour} alt="man" />
+                  <img src={imageFour} alt="man"className="w-[100%]" />
                 </div>
                 <div
                   className=" flex gap-6 6 w-90 px-5 py-5 rounded-lg text-center bg-black
  place-content-around items-center text-center"
                 >
-                  <img src={imageFive} alt="man" />
+                  <img src={imageFive} alt="man"className="w-[100%]" />
                 </div>
                 <div
                   className=" flex gap-6 h-60 w-90 px-5 py-5 rounded-lg text-center bg-black
  place-content-around items-center text-center"
                 >
-                  <img src={imageThree} alt="man" />
+                  <img src={imageThree} alt="man" className="w-[100%]" />
                 </div>
               </div>
             </div>
