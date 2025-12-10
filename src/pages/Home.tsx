@@ -15,11 +15,6 @@ export default function Home() {
         {/* section of heading-container */}
         <h1 className="text-shadow-2xs text-8xl sepia-70 text-indigo-200 flex -mt-75 font-bbh">
           Dataviz Cinema
-          {/* <p className="text-xl text-black">
-            Visualisez l’activité cinématographique à travers les lieux de
-            tournage à Paris: tendances par année, types de tournage,
-            arrondissements, réalisateurs et plus encore. </p>
- */}
         </h1>
         <section className=" sepia-70 flex flex-col  justify-center align-center m-0 px-15">
           {/* section of boxes-container */}
@@ -28,7 +23,7 @@ export default function Home() {
               01
               <h2 className="font-semibold">Actual trends</h2>
               <p className="font-light">
-                Shooting count per année to catch activity peaks.
+                Shooting count per year to catch activity peaks.
               </p>
             </div>
             <div className="bg-indigo-200 text-black border-1 border-gray-600 rounded-lg px-5 py-5 shadow-lg">

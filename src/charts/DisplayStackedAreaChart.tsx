@@ -11,10 +11,10 @@ export default function DisplayStackedAreaChart({chartDatas}: chartsDatabase) {
   let colorChoice = 0;
   const chartColors = [
     "#8884d8",
-    "#82ca9d",
-    "#ffc658",
+    "#82b7caff",
+    "#00317bd8",
+    "#8293caff",
     "#f17d7dff",
-    "#7df1deff",
   ];
   function displayColor(color: number, change: boolean) {
     colorChoice = color < 5 ? color : 0;
