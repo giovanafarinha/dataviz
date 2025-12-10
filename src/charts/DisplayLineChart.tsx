@@ -14,7 +14,6 @@ export default function DisplayLineChart({ chartDatas }: chartsDatabase) {
   const CustomTooltip = ({
     active,
     payload,
-    label,
   }: TooltipContentProps<string | number, string>) => {
     const isVisible = active && payload && payload.length;
     return (

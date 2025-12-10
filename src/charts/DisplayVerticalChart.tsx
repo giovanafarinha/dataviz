@@ -8,7 +8,8 @@ import {
 } from "recharts";
 import { type chartsDatabase } from "../types/chartsTypes";
 
-export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {const CustomTooltip = ({
+export default function DisplayVerticalChart({ chartDatas }: chartsDatabase) {
+  const CustomTooltip = ({
     active,
     payload,
     label,

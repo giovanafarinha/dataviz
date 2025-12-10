@@ -6,7 +6,7 @@ import DisplayDotLineChart from "./DisplayDotLineChart";
 import DisplayLineChart from "./DisplayLineChart";
 import DisplayStackedAreaChart from "./DisplayStackedAreaChart";
 import DisplayVerticalChart from "./DisplayVerticalChart";
-import DisplayThreeDimScatterChart from "./DisplayThreeDimScatterChart";
+import DisplayVerticalLineChart from "./DisplayVerticalLineChart";
 export default function Charts({ chosenChart }: chartProps) {
   let datasForChart: chartsTypes[];
   const { isPending, error, data } = apiQuery(chosenChart);
@@ -24,7 +24,7 @@ export default function Charts({ chosenChart }: chartProps) {
       <DisplayDotLineChart key={chosenChart.query} chartDatas={datasForChart} />
     ),
     producers: (
-      <DisplayThreeDimScatterChart
+      <DisplayVerticalLineChart
         key={chosenChart.query}
         chartDatas={datasForChart}
       />
